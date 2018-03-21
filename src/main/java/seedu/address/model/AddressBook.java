@@ -11,7 +11,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.person.Cca;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.UniqueCcaList;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -25,6 +27,7 @@ import seedu.address.model.tag.UniqueTagList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final UniqueCcaList ccas;
     private final UniqueTagList tags;
 
     /*
@@ -36,13 +39,14 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        ccas = new UniqueCcaList();
         tags = new UniqueTagList();
     }
 
     public AddressBook() {}
 
     /**
-     * Creates an AddressBook using the Persons and Tags in the {@code toBeCopied}
+     * Creates a CollegeZone using the Persons, Ccas and Tags in the {@code toBeCopied}
      */
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
         this();
@@ -55,6 +59,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.persons.setPersons(persons);
     }
 
+    public void setCcas(Set<Cca> ccas) { this.ccas.setCcas(ccas); }
+
     public void setTags(Set<Tag> tags) {
         this.tags.setTags(tags);
     }
@@ -64,24 +70,26 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
+        setCcas(new HashSet<>(newData.getCcaList()));
         setTags(new HashSet<>(newData.getTagList()));
         List<Person> syncedPersonList = newData.getPersonList().stream()
+                .map(this::syncWithMasterCcaList)
                 .map(this::syncWithMasterTagList)
                 .collect(Collectors.toList());
 
         try {
             setPersons(syncedPersonList);
         } catch (DuplicatePersonException e) {
-            throw new AssertionError("AddressBooks should not have duplicate persons");
+            throw new AssertionError("CollegeZone should not have duplicate persons");
         }
     }
 
     //// person-level operations
 
     /**
-     * Adds a person to the address book.
-     * Also checks the new person's tags and updates {@link #tags} with any new tags found,
-     * and updates the Tag objects in the person to point to those in {@link #tags}.
+     * Adds a person to CollegeZone.
+     * Also checks the new person's ccas and tags, and updates {@link #ccas #tags} with any new cca and tags found,
+     * and updates the Cca and Tag objects in the person to point to those in {@link #ccas #tags}.
      *
      * @throws DuplicatePersonException if an equivalent person already exists.
      */
@@ -95,12 +103,13 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
-     * {@code AddressBook}'s tag list will be updated with the tags of {@code editedPerson}.
+     * {@code CollegeZone}'s cca and tag list will be updated with the ccas and tags of {@code editedPerson}.
      *
      * @throws DuplicatePersonException if updating the person's details causes the person to be equivalent to
      *      another existing person in the list.
      * @throws PersonNotFoundException if {@code target} could not be found in the list.
      *
+     * @see #syncWithMasterCcaList(Person)
      * @see #syncWithMasterTagList(Person)
      */
     public void updatePerson(Person target, Person editedPerson)
@@ -127,6 +136,28 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     *  Updates the master cca list to include ccas in {@code person} that are not in the list.
+     *  @return a copy of this {@code person} such that every cca in this person points to a Cca object in the master
+     *  list.
+     */
+    private Person syncWithMasterCcaList(Person person) {
+        final UniqueCcaList personCcas = new UniqueCcaList(person.getCcas());
+        ccas.mergeFrom(personCcas);
+
+        // Create map with values = cca object references in the master list
+        // used for checking person cca references
+        final Map<Cca, Cca> masterCcaObjects = new HashMap<>();
+        ccas.forEach(cca -> masterCcaObjects.put(cca, cca));
+
+        // Rebuild the list of person tags to point to the relevant tags in the master tag list.
+        final Set<Cca> correctCcaReferences = new HashSet<>();
+        personCcas.forEach(cca -> correctCcaReferences.add(masterCcaObjects.get(cca)));
+        return new Person(
+                person.getName(), person.getPhone(), person.getBirthday(),
+                person.getLevelOfFriendship(),  person.getUnitNumber(), correctCcaReferences, person.getTags());
+    }
+
+    /**
      *  Updates the master tag list to include tags in {@code person} that are not in the list.
      *  @return a copy of this {@code person} such that every tag in this person points to a Tag object in the master
      *  list.
@@ -144,7 +175,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         final Set<Tag> correctTagReferences = new HashSet<>();
         personTags.forEach(tag -> correctTagReferences.add(masterTagObjects.get(tag)));
         return new Person(
-                person.getName(), person.getPhone(), person.getEmail(), person.getAddress(), correctTagReferences);
+                person.getName(), person.getPhone(), person.getBirthday(),
+                person.getLevelOfFriendship(),  person.getUnitNumber(), person.getCcas(), correctTagReferences);
+
     }
 
     /**
@@ -157,6 +190,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         } else {
             throw new PersonNotFoundException();
         }
+    }
+
+    //// cca-level operations
+
+    public void addCca(Cca cca) throws UniqueCcaList.DuplicateCcaException {
+        ccas.add(cca);
     }
 
     //// tag-level operations
@@ -203,13 +242,19 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     @Override
     public String toString() {
-        return persons.asObservableList().size() + " persons, " + tags.asObservableList().size() +  " tags";
+        return persons.asObservableList().size() + " persons, " + ccas.asObservableList().size()
+                + "ccas, " + tags.asObservableList().size() +  " tags";
         // TODO: refine later
     }
 
     @Override
     public ObservableList<Person> getPersonList() {
         return persons.asObservableList();
+    }
+
+    @Override
+    public ObservableList<Cca> getCcaList() {
+        return ccas.asObservableList();
     }
 
     @Override
@@ -222,12 +267,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
                 && this.persons.equals(((AddressBook) other).persons)
+                && this.persons.equals(((AddressBook) other).persons)
                 && this.tags.equalsOrderInsensitive(((AddressBook) other).tags));
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(persons, tags);
+        return Objects.hash(persons, ccas, tags);
     }
 }

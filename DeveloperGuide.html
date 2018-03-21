@@ -2081,6 +2081,12 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Find : Change find command to be able to find persons in contact list according to tags<br>
  Logic : Added command aliases to allow users to be able to perform commands by typing shortcuts</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shamsheer Ahamed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Meetup (Tasks) : This feature allows user to set up a meet up date which will be reflected on a Calendar<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Meetup : Added a new Command called meet to allow user to set up a meet up date with RC4 residents<br>
+ Ui : Added a placeholder in PersonCard&#8217;s to display the date of meet up for each person later<br></p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2166,6 +2172,12 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">forgetful RC student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add other RC friends name, birthday, hall CCAs and tags into CollegeZone</p></td>
 <td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forgetful RC student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a reminder of meet up with another RC4 student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shows who you are meetin up with on what date</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2491,6 +2503,55 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
+<h3 id="use-case-meet-person" class="discrete">Use case: Meet person</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add a meet up date on a certain date with a person using his index</p>
+</li>
+<li>
+<p>CollegeZone adds the meet up in the calendar and changes are reflected in the calendar</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="paragraph">
+<p>*1a. The given date is invalid.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="ulist note">
+<ul class="note">
+<li>
+<p>1a1. CollegeZone shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>*1b. The given person&#8217;s index is invalid.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="ulist note">
+<ul class="note">
+<li>
+<p>1b1. CollegeZone shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
 </div>
@@ -2704,7 +2765,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-21 10:47:34 UTC
+Last updated 2018-03-21 17:43:06 UTC
 </div>
 </div>
 </body>

@@ -3,6 +3,8 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.goal.Goal;
+import seedu.address.model.goal.exceptions.DuplicateGoalException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -15,6 +17,9 @@ import seedu.address.model.tag.Tag;
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Goal> PREDICATE_SHOW_ALL_GOALS = unused -> true;
 
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyAddressBook newData);
@@ -49,5 +54,17 @@ public interface Model {
 
     /** Removes the given {@code tag} from all {@code Person}s. */
     void deleteTag(Tag tag);
+
+    /** Adds the given goal */
+    void addGoal(Goal goal) throws DuplicateGoalException;
+
+    /** Returns an unmodifiable view of the filtered person list */
+    ObservableList<Goal> getFilteredGoalList();
+
+    /**
+     * Updates the filter of the filtered goal list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredGoalList(Predicate<Goal> predicate);
 
 }

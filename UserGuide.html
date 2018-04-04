@@ -39,7 +39,7 @@
 <li><a href="#meeting-a-person-code-meet-or-m-code">3.9. Meeting a person : <code>meet OR m</code></a></li>
 <li><a href="#adding-a-reminder-code-reminder-or-r-or-addreminder-code-since-v1-4">3.10. Adding a Reminder: <code>+reminder OR +r OR addreminder</code> [Since v1.4]</a></li>
 <li><a href="#editing-a-reminder-code-r-code-coming-v1-5">3.11. Editing a Reminder: <code>~r</code> [coming v1.5]</a></li>
-<li><a href="#deleting-a-reminder-code-r-code-coming-v1-5">3.12. Deleting a Reminder: <code>-r</code> [coming v1.5]</a></li>
+<li><a href="#deleting-a-reminder-code-reminder-or-r-or-deletereminder-code-since-v1-4">3.12. Deleting a Reminder: <code>-reminder OR -r OR deletereminder</code> [Since v1.4]</a></li>
 <li><a href="#adding-a-goal-code-goal-or-g-or-addgoal-code-coming-v1-3">3.13. Adding a Goal: <code>+goal OR +g OR addgoal</code> [Coming v1.3]</a></li>
 <li><a href="#editing-a-goal-code-goal-or-g-or-editgoal-code-coming-v1-4">3.14. Editing a Goal: <code>~goal OR ~g OR editgoal</code> [Coming v1.4]</a></li>
 <li><a href="#deleting-a-goal-code-goal-or-g-or-deletegoal-code-v1-4">3.15. Deleting a Goal: <code>-goal OR -g OR deletegoal</code> [v1.4]</a></li>
@@ -549,7 +549,7 @@ Format: <code>+r text/REMINDER_TEXT d/START_DATETIME e/END_DATETIME</code></p>
 <p><code>+r text/Eat vitamins d/tmr 8am e/tmr 8.10am</code></p>
 </li>
 <li>
-<p><code>+r text/Dental appointment d/next thurs 3pm e/next thurs 4pm</code></p>
+<p><code>+reminder text/Dental appointment d/next thurs 3pm e/next thurs 4pm</code></p>
 </li>
 </ul>
 </div>
@@ -594,8 +594,38 @@ Edits the reminder text and datetime of the 2nd person to be <code>water plants<
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-reminder-code-r-code-coming-v1-5"><a class="link" href="#deleting-a-reminder-code-r-code-coming-v1-5">3.12. Deleting a Reminder: <code>-r</code> [coming v1.5]</a></h3>
-
+<h3 id="deleting-a-reminder-code-reminder-or-r-or-deletereminder-code-since-v1-4"><a class="link" href="#deleting-a-reminder-code-reminder-or-r-or-deletereminder-code-since-v1-4">3.12. Deleting a Reminder: <code>-reminder OR -r OR deletereminder</code> [Since v1.4]</a></h3>
+<div class="paragraph">
+<p>Deletes a reminder from CollegeZone<br>
+Format: <code>-r REMINDER_TEXT</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes a reminder from CollegeZone and reminder delete will not be reflected in the Calendar anymore.</p>
+</li>
+<li>
+<p><code>REMINDER_TEXT</code>: a string that contains the reminder&#8217;s title</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-r Eat vitamins</code></p>
+</li>
+<li>
+<p><code>-reminder Dental appointment</code></p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="adding-a-goal-code-goal-or-g-or-addgoal-code-coming-v1-3"><a class="link" href="#adding-a-goal-code-goal-or-g-or-addgoal-code-coming-v1-3">3.13. Adding a Goal: <code>+goal OR +g OR addgoal</code> [Coming v1.3]</a></h3>
@@ -1003,6 +1033,12 @@ OR <code>+r [text/REMINDER_TEXT] [d/START_DATETIME] [e/END_DATETIME]</code><br>
 OR <code>addreminder [text/REMINDER_TEXT] [d/START_DATETIME] [e/END_DATETIME]</code><br>
 e.g. <code>+reminder text/Eat pills d/tonight 10pm e/tonight 10.15pm</code></p>
 </li>
+<li>
+<p><strong>Delete Reminder</strong> : <code>-reminder [REMINDER_TEXT]</code><br>
+OR <code>-r [REMINDER_TEXT]</code><br>
+OR <code>deletereminder [REMINDER_TEXT]</code><br>
+e.g. <code>-reminder Eat pills</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -1010,7 +1046,7 @@ e.g. <code>+reminder text/Eat pills d/tonight 10pm e/tonight 10.15pm</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-04 15:12:33 UTC
+Last updated 2018-04-04 15:33:20 UTC
 </div>
 </div>
 </body>

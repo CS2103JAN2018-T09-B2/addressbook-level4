@@ -37,9 +37,9 @@
 <li><a href="#deleting-a-person-code-delete-or-d-code">3.7. Deleting a person : <code>delete OR d</code></a></li>
 <li><a href="#selecting-a-person-code-select-or-s-code">3.8. Selecting a person : <code>select OR s</code></a></li>
 <li><a href="#meeting-a-person-code-meet-or-m-code">3.9. Meeting a person : <code>meet OR m</code></a></li>
-<li><a href="#adding-a-reminder-code-r-code-coming-v1-3">3.10. Adding a Reminder: <code>+r</code> [Coming v1.3]</a></li>
-<li><a href="#editing-a-reminder-code-r-code-v1-4">3.11. Editing a Reminder: <code>~r</code> [v1.4]</a></li>
-<li><a href="#deleting-a-reminder-code-r-code-v1-4">3.12. Deleting a Reminder: <code>-r</code> [v1.4]</a></li>
+<li><a href="#adding-a-reminder-code-reminder-or-r-or-addreminder-code-since-v1-4">3.10. Adding a Reminder: <code>+reminder OR +r OR addreminder</code> [Since v1.4]</a></li>
+<li><a href="#editing-a-reminder-code-r-code-coming-v1-5">3.11. Editing a Reminder: <code>~r</code> [coming v1.5]</a></li>
+<li><a href="#deleting-a-reminder-code-r-code-coming-v1-5">3.12. Deleting a Reminder: <code>-r</code> [coming v1.5]</a></li>
 <li><a href="#adding-a-goal-code-goal-or-g-or-addgoal-code-coming-v1-3">3.13. Adding a Goal: <code>+goal OR +g OR addgoal</code> [Coming v1.3]</a></li>
 <li><a href="#editing-a-goal-code-goal-or-g-or-editgoal-code-coming-v1-4">3.14. Editing a Goal: <code>~goal OR ~g OR editgoal</code> [Coming v1.4]</a></li>
 <li><a href="#deleting-a-goal-code-goal-or-g-or-deletegoal-code-v1-4">3.15. Deleting a Goal: <code>-goal OR -g OR deletegoal</code> [v1.4]</a></li>
@@ -273,7 +273,7 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <h3 id="locating-persons-by-name-code-find-or-f-code-code-since-v1-1-code"><a class="link" href="#locating-persons-by-name-code-find-or-f-code-code-since-v1-1-code">3.5. Locating Persons by name: <code>find OR f</code> <code>[since v1.1]</code></a></h3>
 <div class="paragraph">
 <p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find [n/KEYWORDS] [t/]</code> or <code>find [n/] [t/KEYWORDS]</code></p>
+Format: <code>find [n/KEYWORDS]</code> or <code>find [t/KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -307,15 +307,15 @@ Format: <code>find [n/KEYWORDS] [t/]</code> or <code>find [n/] [t/KEYWORDS]</cod
 <div class="ulist">
 <ul>
 <li>
-<p><code>find n/John t/</code><br>
+<p><code>find n/John</code><br>
 Returns <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
-<p><code>f n/Betsy Tim John t/</code><br>
+<p><code>f n/Betsy Tim John</code><br>
 Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
 </li>
 <li>
-<p><code>find n/ t/friends</code><br>
+<p><code>find t/friends</code><br>
 Returns any person having tags <code>friends</code></p>
 </li>
 </ul>
@@ -487,10 +487,10 @@ Sets up a meeting with the 1st person on the 14th of March, 2018 in your Calenda
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-reminder-code-r-code-coming-v1-3"><a class="link" href="#adding-a-reminder-code-r-code-coming-v1-3">3.10. Adding a Reminder: <code>+r</code> [Coming v1.3]</a></h3>
+<h3 id="adding-a-reminder-code-reminder-or-r-or-addreminder-code-since-v1-4"><a class="link" href="#adding-a-reminder-code-reminder-or-r-or-addreminder-code-since-v1-4">3.10. Adding a Reminder: <code>+reminder OR +r OR addreminder</code> [Since v1.4]</a></h3>
 <div class="paragraph">
 <p>Adds a reminder to CollegeZone<br>
-Format: <code>+r text/REMINDER_TEXT d/DATETIME</code></p>
+Format: <code>+r text/REMINDER_TEXT d/START_DATETIME e/END_DATETIME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -500,7 +500,7 @@ Format: <code>+r text/REMINDER_TEXT d/DATETIME</code></p>
 <p>Adds a reminder to CollegeZone and is reflected in the Calendar.</p>
 </li>
 <li>
-<p><code>DATETIME</code>: a datetime is a string that contains either a date, a time or a combination of both (in any order). If a date is not specified, then it will refer to today. If a time is not specified, then it will refer to the current time.</p>
+<p><code>START_DATETIME</code> &amp; <code>END_DATETIME</code>: a datetime is a string that contains either a date, a time or a combination of both (in any order). If a date is not specified, then it will refer to today. If a time is not specified, then it will refer to the current time.</p>
 </li>
 <li>
 <p>Examples of valid datetime:<br></p>
@@ -546,16 +546,16 @@ Format: <code>+r text/REMINDER_TEXT d/DATETIME</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>+r text/Eat vitamins d/tmr 8am</code></p>
+<p><code>+r text/Eat vitamins d/tmr 8am e/tmr 8.10am</code></p>
 </li>
 <li>
-<p><code>+r text/Dental appointment d/next thurs 3pm</code></p>
+<p><code>+r text/Dental appointment d/next thurs 3pm e/next thurs 4pm</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-reminder-code-r-code-v1-4"><a class="link" href="#editing-a-reminder-code-r-code-v1-4">3.11. Editing a Reminder: <code>~r</code> [v1.4]</a></h3>
+<h3 id="editing-a-reminder-code-r-code-coming-v1-5"><a class="link" href="#editing-a-reminder-code-r-code-coming-v1-5">3.11. Editing a Reminder: <code>~r</code> [coming v1.5]</a></h3>
 <div class="paragraph">
 <p>Edits an existing reminder in CollegeZone.<br>
 Format: <code>~r INDEX [text/REMINDER_TEXT] [d/DATETIME]</code></p>
@@ -594,7 +594,7 @@ Edits the reminder text and datetime of the 2nd person to be <code>water plants<
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-reminder-code-r-code-v1-4"><a class="link" href="#deleting-a-reminder-code-r-code-v1-4">3.12. Deleting a Reminder: <code>-r</code> [v1.4]</a></h3>
+<h3 id="deleting-a-reminder-code-r-code-coming-v1-5"><a class="link" href="#deleting-a-reminder-code-r-code-coming-v1-5">3.12. Deleting a Reminder: <code>-r</code> [coming v1.5]</a></h3>
 
 </div>
 <div class="sect2">
@@ -948,14 +948,17 @@ OR <code>e INDEX [n/NAME] [p/PHONE_NUMBER] [</strong>/LEVEL_OF_FRIENDSHIP] [b/BI
 e.g. <code>edit 2 n/James Lee cca/waterpolo</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+<p><strong>Find</strong> : <code>find n/KEYWORD [MORE_KEYWORDS]</code><br>
+OR <code>f n/KEYWORD [MORE_KEYWORDS]</code><br>
+OR <code>find t/KEYWORD [MORE_KEYWORDS]</code><br>
+OR <code>f t/KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find n/James Jake</code></p>
 </li>
 <li>
 <p><strong>List</strong> : <code>list</code> OR <code>l</code></p>
 </li>
 <li>
-<p><strong>Help</strong> : <code>help</code> or <code>h</code></p>
+<p><strong>Help</strong> : <code>help</code> OR <code>h</code></p>
 </li>
 <li>
 <p><strong>Select</strong> : <code>select INDEX</code> OR <code>s INDEX</code>
@@ -994,6 +997,12 @@ OR <code>!g INDEX</code><br>
 OR <code>completegoal INDEX</code><br>
 e.g. <code>!goal INDEX</code></p>
 </li>
+<li>
+<p><strong>Add Reminder</strong> : <code>+reminder [text/REMINDER_TEXT] [d/START_DATETIME] [e/END_DATETIME]</code><br>
+OR <code>+r [text/REMINDER_TEXT] [d/START_DATETIME] [e/END_DATETIME]</code><br>
+OR <code>addreminder [text/REMINDER_TEXT] [d/START_DATETIME] [e/END_DATETIME]</code><br>
+e.g. <code>+reminder text/Eat pills d/tonight 10pm e/tonight 10.15pm</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -1001,7 +1010,7 @@ e.g. <code>!goal INDEX</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-04 12:18:21 UTC
+Last updated 2018-04-04 13:06:44 UTC
 </div>
 </div>
 </body>

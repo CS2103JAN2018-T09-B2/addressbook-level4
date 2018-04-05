@@ -1026,6 +1026,11 @@ command feature to be able to find persons by tags.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">undo</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">u</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Meet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1040,7 +1045,7 @@ command feature to be able to find persons by tags.</p>
 <div class="paragraph">
 <p>The old add and edit feature holds a broad information about a Person.
 As CollegeZone is catered toward NUS RC4 Residents, we have changed the attributes of a Person to hold:<br>
-<strong>Name, Mobile Number, Birthday, Level of Friendship, RC4 Unit Number, RC4 CCAs and Tags</strong>.<br>
+<strong>Name, Mobile Number, Birthday, Level of Friendship, RC4 Unit Number, Meet up dates with RC4 students, RC4 CCAs and Tags</strong>.<br>
 This is done by removing unwanted attributes of a person and adding new attributes of a person.</p>
 </div>
 <div class="imageblock">
@@ -1065,6 +1070,9 @@ This is done by removing unwanted attributes of a person and adding new attribut
 </li>
 <li>
 <p>Unit Number: Must be a valid unit number in RC4.</p>
+</li>
+<li>
+<p>Meet Date: Must be a valid date.</p>
 </li>
 <li>
 <p>A RC4 resident is able to have multiple CCAs.</p>
@@ -1612,8 +1620,7 @@ b. Require developers to download those libraries manually (this creates extra w
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Shamsheer Ahamed</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Meetup (Tasks) : This feature allows user to set up a meet up date that will be reflected on a Calendar<br></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meetup : Added a new Command called meet to allow user to set up a meet up date with RC4 residents<br>
- Ui : Added a placeholder in PersonCard&#8217;s to display the date of meet up for each person later<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Profile Photo : Added a male female profile pictures to GUI for an interactive experience.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Goh Zu Wei</p></td>
@@ -1716,8 +1723,8 @@ b. Require developers to download those libraries manually (this creates extra w
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">forgetful RC student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a reminder of meet up with another RC4 student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows who you are meeting up with on what date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set up a meet up with another RC4 student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shows who you are meeting up with on the calendar</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2072,12 +2079,10 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="paragraph">
-<p>*1a. The given date is invalid.</p>
-</div>
-<div class="paragraph">
-<p>+</p>
-</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The given date is invalid.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -2088,18 +2093,18 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>*1b. The given person&#8217;s index is invalid.</p>
-</div>
-<div class="paragraph">
-<p>+</p>
-</div>
+</li>
+<li>
+<p>1b. The given person&#8217;s index is invalid.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
 <p>1b1. CollegeZone shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
+</div>
+</li>
+</ul>
 </div>
 </li>
 </ul>
@@ -2317,7 +2322,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 04:26:51 UTC
+Last updated 2018-04-05 04:44:58 UTC
 </div>
 </div>
 </body>

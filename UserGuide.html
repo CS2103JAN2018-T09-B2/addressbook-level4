@@ -489,7 +489,7 @@ Sets up a meeting with the 1st person on the 14th of March, 2018 in your Calenda
 <div class="sect2">
 <h3 id="adding-a-reminder-code-reminder-or-r-or-addreminder-code-since-v1-4"><a class="link" href="#adding-a-reminder-code-reminder-or-r-or-addreminder-code-since-v1-4">3.10. Adding a Reminder: <code>+reminder OR +r OR addreminder</code> [Since v1.4]</a></h3>
 <div class="paragraph">
-<p>Adds a reminder to CollegeZone<br>
+<p>You can set a reminder into the calendar in CollegeZone<br>
 Format: <code>+r text/REMINDER_TEXT d/START_DATETIME e/END_DATETIME</code></p>
 </div>
 <div class="sidebarblock">
@@ -497,13 +497,13 @@ Format: <code>+r text/REMINDER_TEXT d/START_DATETIME e/END_DATETIME</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Adds a reminder to CollegeZone and is reflected in the Calendar.</p>
+<p>A reminder will be added to CollegeZone and it will reflected in the Calendar.</p>
 </li>
 <li>
 <p><code>START_DATETIME</code> &amp; <code>END_DATETIME</code>: a datetime is a string that contains either a date, a time or a combination of both (in any order). If a date is not specified, then it will refer to today. If a time is not specified, then it will refer to the current time.</p>
 </li>
 <li>
-<p>Examples of valid datetime:<br></p>
+<p>Examples of valid START_DATETIME &amp; END_DATETIME:<br></p>
 <div class="ulist">
 <ul>
 <li>
@@ -531,7 +531,7 @@ Format: <code>+r text/REMINDER_TEXT d/START_DATETIME e/END_DATETIME</code></p>
 <p>14 Feb 2014 5.30am<br></p>
 </li>
 <li>
-<p>29/2/14 23:59</p>
+<p>2/29/14 23:59<br></p>
 </li>
 </ul>
 </div>
@@ -539,6 +539,19 @@ Format: <code>+r text/REMINDER_TEXT d/START_DATETIME e/END_DATETIME</code></p>
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You should use a date format of MM/DD/YYYY instead of DD/MM/YYYY if you choose to
+use this date format for the START_DATETIME or END_DATETIME
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -596,22 +609,72 @@ Edits the reminder text and datetime of the 2nd person to be <code>water plants<
 <div class="sect2">
 <h3 id="deleting-a-reminder-code-reminder-or-r-or-deletereminder-code-since-v1-4"><a class="link" href="#deleting-a-reminder-code-reminder-or-r-or-deletereminder-code-since-v1-4">3.12. Deleting a Reminder: <code>-reminder OR -r OR deletereminder</code> [Since v1.4]</a></h3>
 <div class="paragraph">
-<p>Deletes a reminder from CollegeZone<br>
-Format: <code>-r REMINDER_TEXT</code></p>
+<p>You can delete a reminder that you have set into the calenar in CollegeZone<br>
+Format: <code>-r [text/REMINDER_TEXT] [d/START_DATETIME]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes a reminder from CollegeZone and reminder delete will not be reflected in the Calendar anymore.</p>
+<p>Deletes a reminder from CollegeZone and the reminder will not be reflected in the Calendar anymore.</p>
 </li>
 <li>
 <p><code>REMINDER_TEXT</code>: a string that contains the reminder&#8217;s title</p>
 </li>
+<li>
+<p><code>START_DATETIME</code>: a datetime is a string that contains either a date, a time or a combination of both (in any order). If a date is not specified, then it will refer to today. If a time is not specified, then it will refer to the current time.</p>
+</li>
+<li>
+<p>Examples of valid START_DATETIM:<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>[date] [time]<br></p>
+</li>
+<li>
+<p>3pm<br></p>
+</li>
+<li>
+<p>today<br></p>
+</li>
+<li>
+<p>tmr<br></p>
+</li>
+<li>
+<p>10 Feb<br></p>
+</li>
+<li>
+<p>thursday 8am<br></p>
+</li>
+<li>
+<p>tomorrow 3pm<br></p>
+</li>
+<li>
+<p>14 Feb 2014 5.30am<br></p>
+</li>
+<li>
+<p>2/29/14 23:59<br></p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You should use a date format of MM/DD/YYYY instead of DD/MM/YYYY if you choose to
+use this date format for START_DATETIME
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -619,10 +682,10 @@ Format: <code>-r REMINDER_TEXT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>-r Eat vitamins</code></p>
+<p><code>-r text/Eat vitamins d/tmr 8pm</code></p>
 </li>
 <li>
-<p><code>-reminder Dental appointment</code></p>
+<p><code>-reminder text/Dental appointment d/tmr</code></p>
 </li>
 </ul>
 </div>
@@ -1046,7 +1109,7 @@ e.g. <code>-reminder Eat pills</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 05:56:44 UTC
+Last updated 2018-04-06 06:18:06 UTC
 </div>
 </div>
 </body>

@@ -54,68 +54,8 @@
 <li><a href="#targeted-add-and-edit-command-since-v1-2">3.8. Targeted add and edit command [Since v1.2]</a></li>
 <li><a href="#reminders-since-v1-4">3.9. Reminders [Since v1.4]</a></li>
 <li><a href="#goals-list-since-v1-4">3.10. Goals List [Since v1.4]</a></li>
-<li><a href="#rate-friends-since-v1-4">3.11. Rate friends [Since v1.4]</a></li>
-</ul>
-</li>
-<li><a href="#documentation">4. Documentation</a>
-<ul class="sectlevel2">
-<li><a href="#editing-documentation">4.1. Editing Documentation</a></li>
-<li><a href="#publishing-documentation">4.2. Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></li>
-</ul>
-</li>
-<li><a href="#Testing">5. Testing</a>
-<ul class="sectlevel2">
-<li><a href="#running-tests">5.1. Running Tests</a></li>
-<li><a href="#types-of-tests">5.2. Types of tests</a></li>
-<li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
-</ul>
-</li>
-<li><a href="#dev-ops">6. Dev Ops</a>
-<ul class="sectlevel2">
-<li><a href="#build-automation">6.1. Build Automation</a></li>
-<li><a href="#continuous-integration">6.2. Continuous Integration</a></li>
-<li><a href="#coverage-reporting">6.3. Coverage Reporting</a></li>
-<li><a href="#documentation-previews">6.4. Documentation Previews</a></li>
-<li><a href="#making-a-release">6.5. Making a Release</a></li>
-<li><a href="#managing-dependencies">6.6. Managing Dependencies</a></li>
-</ul>
-</li>
-<li><a href="#GetStartedProgramming">Appendix A: Product Scope</a></li>
-<li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a>
-<ul class="sectlevel2">
-<li><a href="#use-case-add-student">C.1. Use case: Add student</a></li>
-<li><a href="#use-case-delete-student">C.2. Use case: Delete student</a></li>
-<li><a href="#use-case-edit-student">C.3. Use case: Edit student</a></li>
-<li><a href="#use-case-find-student">C.4. Use case: Find student</a></li>
-<li><a href="#use-case-select-student-or-goal">C.5. Use case: Select student or goal</a></li>
-<li><a href="#use-case-add-reminder">C.6. Use case: Add reminder</a></li>
-<li><a href="#use-case-delete-reminder">C.7. Use case: Delete reminder</a></li>
-<li><a href="#use-case-meet-student">C.8. Use case: Meet student</a></li>
-<li><a href="#use-case-add-goal">C.9. Use case: Add goal</a></li>
-<li><a href="#use-case-edit-goal">C.10. Use case: Edit goal</a></li>
-<li><a href="#use-case-delete-goal">C.11. Use case: Delete goal</a></li>
-<li><a href="#use-case-complete-goal">C.12. Use case: Complete goal</a></li>
-<li><a href="#use-case-ongoing-goal">C.13. Use case: Ongoing goal</a></li>
-<li><a href="#use-case-sort-goal">C.14. Use case: Sort goal</a></li>
-<li><a href="#use-case-seek-resident-assistant-ra">C.15. Use case: Seek Resident Assistant (RA)</a></li>
-<li><a href="#use-case-rate-friends">C.16. Use case: Rate friends</a></li>
-<li><a href="#use-case-show-student">C.17. Use case: Show student</a></li>
-<li><a href="#use-case-switch-theme-colour">C.18. Use case: Switch theme colour</a></li>
-<li><a href="#use-case-history">C.19. Use case: History</a></li>
-<li><a href="#use-case-clear">C.20. Use case: Clear</a></li>
-<li><a href="#use-case-exit-collegezone">C.21. Use case: Exit CollegeZone</a></li>
-</ul>
-</li>
-<li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
-<ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-student">G.2. Deleting a student</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#meet-command-since-v1-2">3.11. Meet Command [Since v1.2]</a></li>
+<li><a href="#sorting-mechanism">3.12. Sorting mechanism</a></li>
 </ul>
 </li>
 </ul>
@@ -305,7 +245,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <p>Get some sense of the overall design by reading <a href="#Design-Architecture">Section 2.1, &#8220;Architecture&#8221;</a>.</p>
 </li>
 <li>
-<p>Take a look at <a href="#GetStartedProgramming">Appendix A, <em>Product Scope</em></a>.</p>
+<p>Take a look at <a href="#GetStartedProgramming">[GetStartedProgramming]</a>.</p>
 </li>
 </ol>
 </div>
@@ -1531,9 +1471,87 @@ Coming up with new algorithms is very time consuming. Implementation of My Goals
 </div>
 </div>
 <div class="sect2">
-<h3 id="rate-friends-since-v1-4"><a class="link" href="#rate-friends-since-v1-4">3.11. Rate friends [Since v1.4]</a></h3>
+<h3 id="meet-command-since-v1-2"><a class="link" href="#meet-command-since-v1-2">3.11. Meet Command [Since v1.2]</a></h3>
 <div class="paragraph">
-<p>The Rate friends feature allows RC4 residents to rate their friends and change their levels of friendship.
+<p>The new meet up command was implemented specifically to provide a platform in CollegeZone for RC4 students to set up
+meeting with other students with ease.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-mechanism"><a class="link" href="#sorting-mechanism">3.12. Sorting mechanism</a></h3>
+<div class="paragraph">
+<p>The sorting mechanism is facilitated by <code>SortCommandParser</code> and <code>SortCommand</code>, with both classes residing in the <code>Logic</code> component of the address book. Since the address book state will be modified during the sorting process, the <code>sort</code> has to be undoable.</p>
+</div>
+<div class="paragraph">
+<p><code>SortCommandParser</code> takes in an argument in the form of <code>INDEX_TYPE</code> that defines how <code>UniquePersonList</code> should be sorted. You may customise the sort operation, with <code>PREFIX</code> specifying the sort type. It first checks for validity against a regular expression. Once verified, the argument will be tokenized to identify your specified sort type. A <code>SortCommand</code> object is then created with the identified sort type.</p>
+</div>
+<div class="paragraph">
+<p>The <code>INDEX_TYPE</code> can be any three of the following: <code>1</code> for sorting RC4 Students based on their level of friendship, <code>2</code> for sorting persons by meet date, <code>3</code> for sorting persons by Birthday. The <code>ORDER</code> can be either <code>asc</code> for sorting in ascending order or <code>dsc</code> for sorting in descending order. The sorted list is always default to descending order of importance.</p>
+</div>
+<div class="paragraph">
+<p>Upon execution of <code>SortCommand</code>, a <code>Comparator&lt;Person&gt;</code> will be initialised based on the sort type it receives. A <code>sortPersons</code> function call will be made to <code>Model</code>, which propagates down to <code>UniquePersonList</code>, where the sorting of the <code>internalList</code> occurs. Since sorting of <code>internalList</code> results in the change of state to address book, <code>SortCommand</code> is to be implemented as an <code>UndoableCommand</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Implementation of Sorting Mechanism requires both the manipulation of <code>Logic</code> and <code>Model</code> component of address book.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the flow of operation from the point the address book receives an input to the output of the result.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SortPersonSdForLogic.png" alt="SortPersonSdForLogic" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 4.5.2 : Interactions Inside the Logic Component for the <code>sort 1</code> Command</em></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the list is found to be empty, an <code>CommandException</code> will be thrown from <code>SortCommand</code>. The command should be terminated without any state change, keeping the redoStack clean of changes.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.12.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Initialising of <code>Comparator&lt;Person&gt;</code><br>
+<strong>Alternative 1:</strong> Initialise in <code>SortCommand</code><br>
+<strong>Pros:</strong> Clear separation of concerns, <code>SortCommandParser</code> to handle identifying of attribute to sort by only.<br>
+<strong>Cons:</strong> Hard for new developers to follow as other commands like <code>AddCommand</code> handles object creation in its parser.<br>
+<strong>Alternative 2 (current choice): </strong> Initialise in <code>UniquePersonList</code><br>
+<strong>Pros:</strong> Straightforward as initialises the <code>Comparator</code> where it is used.<br>
+<strong>Cons:</strong> <code>UniquePersonList</code> is at a lower level and should only handle a minimal set of <code>Person</code> related operations, and not logical operations like string matching.<br></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Sorting by multiple attribute<br>
+<strong>Alternative 1 (current choice):</strong> Only allows sorting by single attribute<br>
+<strong>Pros:</strong> Fast and arguments to input is straightforward.<br>
+<strong>Cons:</strong> Unable to have fine grain control of how list should appear.<br>
+<strong>Alternative 2:</strong> Allow sorting by multiple attribute<br>
+<strong>Pros:</strong> Enables fine grain control of how list should appear.<br>
+<strong>Cons:</strong> Not necessary as effect is only obvious when contact list is long and has multiple common names. As target audience for iConnect are students, contact list will not be more than few thousand contacts long.<br></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>=== Rate friends [Since v1.4]
+The Rate friends feature allows RC4 residents to rate their friends and change their levels of friendship.
 This feature is implemented by the <code>RateCommand</code> and <code>RateCommandParser</code> in the Logic component of the CollegeZone code.
 The RC4 student is able to rate one or more friends by keying in the new desired level of friendship through the Command Line Interface (CLI).
 The <code>RateCommand</code> inherits from <code>UndoableCommands</code> as well, as shown in the diagram below.</p>
@@ -1617,8 +1635,9 @@ As seen in the code below, there will be a error message informing the user that
             }</code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.11.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p>==== Design Considerations</p>
+</div>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of <code>RateCommand</code>.<br>
 <strong>Alternative 1 (current choice):</strong> Creates a new <code>Person</code> object which copies all its respective personal details and adds a new <code>LevelOfFriendship</code> value.<br>
@@ -1628,13 +1647,9 @@ As seen in the code below, there will be a error message informing the user that
 <strong>Pros:</strong> Relatively simple to implement.<br>
 <strong>Cons:</strong> Additional methods have to be added to ensure that the <code>input values</code> and <code>indexes</code> are valid.</p>
 </div>
+<div class="paragraph">
+<p>== Documentation</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>We use asciidoc for writing documentation.</p>
 </div>
@@ -1650,21 +1665,22 @@ We chose asciidoc over Markdown because asciidoc, although a bit more complex th
 </tr>
 </table>
 </div>
-<div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">4.1. Editing Documentation</a></h3>
+<div class="paragraph">
+<p>=== Editing Documentation</p>
+</div>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
 Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
 </div>
+<div class="paragraph">
+<p>=== Publishing Documentation</p>
 </div>
-<div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">4.2. Publishing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
 </div>
+<div class="paragraph">
+<p>=== Converting Documentation to PDF format</p>
 </div>
-<div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
@@ -1693,14 +1709,12 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 </div>
 <div class="title">Figure 13. Saving documentation as PDF files in Chrome</div>
 </div>
+<div id="Testing" class="paragraph">
+<p>== Testing</p>
 </div>
+<div class="paragraph">
+<p>=== Running Tests</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="Testing"><a class="link" href="#Testing">5. Testing</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">5.1. Running Tests</a></h3>
 <div class="paragraph">
 <p>There are three ways to run tests.</p>
 </div>
@@ -1760,9 +1774,9 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <div class="paragraph">
 <p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code> (Mac/Linux: <code>./gradlew clean headless allTests</code>)</p>
 </div>
+<div class="paragraph">
+<p>=== Types of tests</p>
 </div>
-<div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">5.2. Types of tests</a></h3>
 <div class="paragraph">
 <p>We have two types of tests:</p>
 </div>
@@ -1802,11 +1816,9 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </li>
 </ol>
 </div>
-</div>
-<div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></h3>
 <div class="paragraph">
-<p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
+<p>=== Troubleshooting Testing
+<strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1818,38 +1830,34 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>== Dev Ops</p>
 </div>
+<div class="paragraph">
+<p>=== Build Automation</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">6.1. Build Automation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
 </div>
+<div class="paragraph">
+<p>=== Continuous Integration</p>
 </div>
-<div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">6.2. Continuous Integration</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
 </div>
+<div class="paragraph">
+<p>=== Coverage Reporting</p>
 </div>
-<div class="sect2">
-<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">6.3. Coverage Reporting</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="documentation-previews"><a class="link" href="#documentation-previews">6.4. Documentation Previews</a></h3>
 <div class="paragraph">
-<p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
+<p>=== Documentation Previews
+When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
 </div>
+<div class="paragraph">
+<p>=== Making a Release</p>
 </div>
-<div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">6.5. Making a Release</a></h3>
 <div class="paragraph">
 <p>Here are the steps to create a new release.</p>
 </div>
@@ -1869,20 +1877,17 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>=== Managing Dependencies</p>
 </div>
-<div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">6.6. Managing Dependencies</a></h3>
 <div class="paragraph">
 <p>A project often depends on third-party libraries. For example, CollegeZone depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
 a. Include those libraries in the repo (this bloats the repo size)<br>
 b. Require developers to download those libraries manually (this creates extra work for developers)</p>
 </div>
+<div id="GetStartedProgramming" class="paragraph">
+<p>== Product Scope</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="GetStartedProgramming"><a class="link" href="#GetStartedProgramming">Appendix A: Product Scope</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Target user profile</strong>:</p>
 </div>
@@ -1951,8 +1956,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Shamsheer Ahamed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meetup (Tasks) : This feature allows user to set up a meet up date that will be reflected on a Calendar<br></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Profile Photo : Added a male female profile pictures to GUI for an interactive experience.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Social (Meet-Up) : This feature allows user to set up meet ups with RC4 students that will be reflected on a Calendar<br>
+ Social (Sorting) : On top of the meet up dates appearing on the calendar, a sorting tool is also added to keep the user up to date with his meet up dates, birthdays and friendship levels.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command Box Enhancement : Added a autocomplete command that auto fills the required preambles for the individual commands in the command box</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Goh Zu Wei</p></td>
@@ -1961,11 +1967,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>== User Stories</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
@@ -2076,6 +2080,18 @@ b. Require developers to download those libraries manually (this creates extra w
 <td class="tableblock halign-left valign-top"><p class="tableblock">do necessary group preparation prior to a group event</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RC student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set up meetings and keep track of them</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I can effectively network and meet new people in my RC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RC student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily find out important dates like meeting dates and birth dates</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be up to task with those dates</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">careless RC student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">undo a command I entered</p></td>
@@ -2134,13 +2150,12 @@ b. Require developers to download those libraries manually (this creates extra w
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
 </div>
+<div class="paragraph">
+<p>== Use Cases</p>
 </div>
+<div class="paragraph">
+<p>=== Use case: Add student</p>
 </div>
-<div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="use-case-add-student"><a class="link" href="#use-case-add-student">C.1. Use case: Add student</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2177,9 +2192,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Delete student</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-delete-student"><a class="link" href="#use-case-delete-student">C.2. Use case: Delete student</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2228,27 +2243,16 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="use-case-edit-student"><a class="link" href="#use-case-edit-student">C.3. Use case: Edit student</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list students</p>
-</li>
-<li>
-<p>CollegeZone shows a list of students</p>
-</li>
-<li>
-<p>User requests to edit a detail or multiple details of a student in the list</p>
-</li>
-<li>
-<p>CollegeZone edits the detail or details of the student</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>=== Use case: Edit student
+1.  User requests to list students
+2.  CollegeZone shows a list of students
+3.  User requests to edit a detail or multiple details of a student in the list
+4. CollegeZone edits the detail or details of the student</p>
 </div>
-</li>
-</ol>
+<div class="paragraph">
+<p>+
+Use case ends.</p>
 </div>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
@@ -2286,21 +2290,14 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="use-case-find-student"><a class="link" href="#use-case-find-student">C.4. Use case: Find student</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to find student by tag or name using keywords</p>
-</li>
-<li>
-<p>CollegeZone shows a list of students</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>=== Use case: Find student
+1. User requests to find student by tag or name using keywords
+2. CollegeZone shows a list of students</p>
 </div>
-</li>
-</ol>
+<div class="paragraph">
+<p>+
+Use case ends.</p>
 </div>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
@@ -2339,27 +2336,16 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="use-case-select-student-or-goal"><a class="link" href="#use-case-select-student-or-goal">C.5. Use case: Select student or goal</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to list students</p>
-</li>
-<li>
-<p>CollegeZone shows a list of students</p>
-</li>
-<li>
-<p>User requests to select a student or goal</p>
-</li>
-<li>
-<p>CollegeZone shows the detail of the student or goal</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>=== Use case: Select student or goal
+1. User requests to list students
+2. CollegeZone shows a list of students
+3. User requests to select a student or goal
+4. CollegeZone shows the detail of the student or goal</p>
 </div>
-</li>
-</ol>
+<div class="paragraph">
+<p>+
+Use case ends.</p>
 </div>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
@@ -2391,9 +2377,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Add reminder</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-add-reminder"><a class="link" href="#use-case-add-reminder">C.6. Use case: Add reminder</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2427,9 +2413,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Delete reminder</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-delete-reminder"><a class="link" href="#use-case-delete-reminder">C.7. Use case: Delete reminder</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2476,9 +2462,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Meet student</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-meet-student"><a class="link" href="#use-case-meet-student">C.8. Use case: Meet student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2525,21 +2511,63 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Sort students</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-add-goal"><a class="link" href="#use-case-add-goal">C.9. Use case: Add goal</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to add a goal in the list</p>
+<p>Users requests to sort the RC4 Students list according to meet up dates.</p>
 </li>
 <li>
-<p>CollegeZone adds the goal</p>
+<p>CollegeZone sorts the list and shows the upcoming the meet dates first.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The list is empty</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CollegeZone shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The given sorting index type is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. CollegeZone shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>=== Use case: Add goal
+1. User requests to add a goal in the list
+2. CollegeZone adds the goal</p>
+</div>
+<div class="paragraph">
+<p>+
+Use case ends.</p>
 </div>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
@@ -2561,24 +2589,15 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="use-case-edit-goal"><a class="link" href="#use-case-edit-goal">C.10. Use case: Edit goal</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>CollegeZone shows a list of goals</p>
-</li>
-<li>
-<p>User requests to edit a detail or multiple details of a goal in the list</p>
-</li>
-<li>
-<p>CollegeZone edits the detail or details of the selected goal</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>=== Use case: Edit goal
+1.  CollegeZone shows a list of goals
+2.  User requests to edit a detail or multiple details of a goal in the list
+3. CollegeZone edits the detail or details of the selected goal</p>
 </div>
-</li>
-</ol>
+<div class="paragraph">
+<p>+
+Use case ends.</p>
 </div>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
@@ -2632,9 +2651,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Delete goal</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-delete-goal"><a class="link" href="#use-case-delete-goal">C.11. Use case: Delete goal</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2680,9 +2699,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Complete goal</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-complete-goal"><a class="link" href="#use-case-complete-goal">C.12. Use case: Complete goal</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2745,9 +2764,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Ongoing goal</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-ongoing-goal"><a class="link" href="#use-case-ongoing-goal">C.13. Use case: Ongoing goal</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2813,9 +2832,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Sort goal</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-sort-goal"><a class="link" href="#use-case-sort-goal">C.14. Use case: Sort goal</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2894,9 +2913,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Seek Resident Assistant (RA)</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-seek-resident-assistant-ra"><a class="link" href="#use-case-seek-resident-assistant-ra">C.15. Use case: Seek Resident Assistant (RA)</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2950,11 +2969,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="use-case-rate-friends"><a class="link" href="#use-case-rate-friends">C.16. Use case: Rate friends</a></h3>
 <div class="paragraph">
-<p><strong>MSS</strong></p>
+<p>=== Use case: Rate friends
+<strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -3011,11 +3028,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="use-case-show-student"><a class="link" href="#use-case-show-student">C.17. Use case: Show student</a></h3>
 <div class="paragraph">
-<p><strong>MSS</strong></p>
+<p>=== Use case: Show student
+<strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -3067,9 +3082,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Switch theme colour</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-switch-theme-colour"><a class="link" href="#use-case-switch-theme-colour">C.18. Use case: Switch theme colour</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3115,9 +3130,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: History</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-history"><a class="link" href="#use-case-history">C.19. Use case: History</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3154,9 +3169,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Clear</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-clear"><a class="link" href="#use-case-clear">C.20. Use case: Clear</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3193,9 +3208,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>=== Use case: Exit CollegeZone</p>
 </div>
-<div class="sect2">
-<h3 id="use-case-exit-collegezone"><a class="link" href="#use-case-exit-collegezone">C.21. Use case: Exit CollegeZone</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3232,12 +3247,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>== Non Functional Requirements</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
-<div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3267,11 +3279,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>== Glossary</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
-<div class="sectionbody">
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
@@ -3292,11 +3302,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </dd>
 </dl>
 </div>
+<div class="paragraph">
+<p>== Product Survey</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Product Name</strong></p>
 </div>
@@ -3329,11 +3337,9 @@ b. Require developers to download those libraries manually (this creates extra w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>== Instructions for Manual Testing</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
 </div>
@@ -3349,8 +3355,9 @@ These instructions only provide a starting point for testers to work on; testers
 </tr>
 </table>
 </div>
-<div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<div class="paragraph">
+<p>=== Launch and Shutdown</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3386,9 +3393,9 @@ Expected: The most recent window size and location is retained.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
+<div class="paragraph">
+<p>=== Deleting a student</p>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-student"><a class="link" href="#deleting-a-student">G.2. Deleting a student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3418,9 +3425,9 @@ Expected: Similar to previous.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
+<div class="paragraph">
+<p>=== Saving data</p>
 </div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3442,9 +3449,12 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 16:20:14 UTC
+Last updated 2018-04-14 17:30:26 UTC
 </div>
 </div>
 </body>

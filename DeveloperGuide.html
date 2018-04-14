@@ -54,6 +54,7 @@
 <li><a href="#targeted-add-and-edit-command-since-v1-2">3.8. Targeted add and edit command [Since v1.2]</a></li>
 <li><a href="#reminders-since-v1-4">3.9. Reminders [Since v1.4]</a></li>
 <li><a href="#goals-list-since-v1-4">3.10. Goals List [Since v1.4]</a></li>
+<li><a href="#rate-friends-since-v1-4">3.11. Rate friends [Since v1.4]</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -98,10 +99,13 @@
 <li><a href="#use-case-complete-goal">C.12. Use case: Complete goal</a></li>
 <li><a href="#use-case-ongoing-goal">C.13. Use case: Ongoing goal</a></li>
 <li><a href="#use-case-sort-goal">C.14. Use case: Sort goal</a></li>
-<li><a href="#use-case-switch-theme-colour">C.15. Use case: Switch theme colour</a></li>
-<li><a href="#use-case-history">C.16. Use case: History</a></li>
-<li><a href="#use-case-clear">C.17. Use case: Clear</a></li>
-<li><a href="#use-case-exit-collegezone">C.18. Use case: Exit CollegeZone</a></li>
+<li><a href="#use-case-seek-resident-assistant-ra">C.15. Use case: Seek Resident Assistant (RA)</a></li>
+<li><a href="#use-case-rate-friends">C.16. Use case: Rate friends</a></li>
+<li><a href="#use-case-show-student">C.17. Use case: Show student</a></li>
+<li><a href="#use-case-switch-theme-colour">C.18. Use case: Switch theme colour</a></li>
+<li><a href="#use-case-history">C.19. Use case: History</a></li>
+<li><a href="#use-case-clear">C.20. Use case: Clear</a></li>
+<li><a href="#use-case-exit-collegezone">C.21. Use case: Exit CollegeZone</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -1033,14 +1037,29 @@ command feature to be able to find persons by tags.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">l</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rt</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Redo</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">redo</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">r</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seek</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">seek</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sk</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Select</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">select</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">show</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sh</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Undo</p></td>
@@ -1511,6 +1530,106 @@ Coming up with new algorithms is very time consuming. Implementation of My Goals
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="rate-friends-since-v1-4"><a class="link" href="#rate-friends-since-v1-4">3.11. Rate friends [Since v1.4]</a></h3>
+<div class="paragraph">
+<p>The Rate friends feature allows RC4 residents to rate their friends and change their levels of friendship.
+This feature is implemented by the <code>RateCommand</code> and <code>RateCommandParser</code> in the Logic component of the CollegeZone code.
+The RC4 student is able to rate one or more friends by keying in the new desired level of friendship through the Command Line Interface (CLI).
+The <code>RateCommand</code> inherits from <code>UndoableCommands</code> as well, as shown in the diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RateCommandClassDiagram.jpg" alt="RateCommandClassDiagram" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>To rate other RC4 residents and friends, the <code>LevelOfFriendship</code> class is being used and is part of the <code>Person</code> class.
+A <code>Person</code> is composed of a <code>LevelOfFriendship</code> component, and each person in CollegeZone application has a particular level of friendship between <code>1</code> to <code>10</code>.
+The next diagram illustrates the relationship between a
+<code>Person</code> and its <code>LevelOfFriendship</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RCPersonClass.jpg" alt="RCPersonClass" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>The following shows a part of the code of <code>RateCommand</code> and reveals
+the parameters that <code>RateCommand</code> makes use of.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> RateCommand(<span class="predefined-type">List</span>&lt;Index&gt; indexList, <span class="predefined-type">String</span> levelOfFriendship) {
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As observed, <code>RateCommand</code> involves two parameters, namely <code>indexList</code> and <code>leveloffriendship</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>indexList</code> has a <code>List</code> of indexes type, and <code>leveloffriendship</code> is of <code>String</code> type.</p>
+</div>
+<div class="paragraph">
+<p>The parameter <code>indexList</code> refers to the list of students whose are intended to be rated, and thus
+<code>RateCommand</code> is able to help RC4 residents rate multiple people at a time. The <code>leveloffriendship</code>
+parameter refers to the new level of friendship that the resident would like to rate their friends to.</p>
+</div>
+<div class="paragraph">
+<p>The following code sample shows the execution of <code>RateCommnad</code>,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
+        <span class="predefined-type">List</span>&lt;Person&gt; latestList = model.getFilteredPersonList();
+        <span class="keyword">for</span> (Index index : indexList) {
+            Person selectedPerson = latestList.get(index.getZeroBased());
+            <span class="keyword">try</span> {
+                Person editedPerson = <span class="keyword">new</span> Person(selectedPerson.getName(), selectedPerson.getPhone(),
+                        selectedPerson.getBirthday(), <span class="keyword">new</span> LevelOfFriendship(levelOfFriendship),
+                        selectedPerson.getUnitNumber(),
+                        selectedPerson.getCcas(), selectedPerson.getMeetDate(), selectedPerson.getTags());
+                model.updatePerson(selectedPerson, editedPerson);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As seen, the index of the student whose level of friendship is to be rated and changed, a new <code>editedPerson</code> object is created
+and all the details of the person, the name and phone number and other details were copied from the <code>selectedPerson</code> and is assigned the new level of friendship from the rate command.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If an invalid index value is entered, i.e the person with an <code>index</code> of which does not exist in CollegeZone contact list is entered with valid <code>index</code> entries,
+only the valid entries will have their <code>Level of friendships</code> rated and updated.
+As seen in the code below, there will be a error message informing the user that they have keyed in an invalid <code>index</code> value.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">            <span class="keyword">if</span> (index.getZeroBased() &gt;= latestList.size()) {
+                <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_ONE_OR_MORE_INVALID_INDEX);
+            }</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.11.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>RateCommand</code>.<br>
+<strong>Alternative 1 (current choice):</strong> Creates a new <code>Person</code> object which copies all its respective personal details and adds a new <code>LevelOfFriendship</code> value.<br>
+<strong>Pros:</strong> It uses a pre-existing method, and additional methods to implement <code>RateCommand</code> need not be created and added. <br>
+<strong>Cons:</strong> Copying all respective personal data in order to change only the <code>LevelOfFriendship</code> attribute can be excessive as cause additional processing time if a <code>person</code> have many attributes.<br>
+<strong>Alternative 2:</strong> Add a <code>changeLevelOfFriendship</code> setter method in <code>Person</code> class<br>
+<strong>Pros:</strong> Relatively simple to implement.<br>
+<strong>Cons:</strong> Additional methods have to be added to ensure that the <code>input values</code> and <code>indexes</code> are valid.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1837,8 +1956,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Goh Zu Wei</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Form Groups : This feature allows user to organize students to form study groups or recreational sport groups<br>
- Set event: Add events and dates for the group meeting and gathering.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rate Friends : This feature allows categorize and rate one or more friends by changing their levels of friendships.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Seek: Add seek command to be able to seek the Resident Assistant (RA) of any particular the student living in RC4</p></td>
 </tr>
 </tbody>
@@ -1914,6 +2032,12 @@ b. Require developers to download those libraries manually (this creates extra w
 <td class="tableblock halign-left valign-top"><p class="tableblock">RC student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">set a level of friendship with a specific person</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">maintain my friendships depending on a priority system set by myself</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RC student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rate my friends</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track and update of who my close friends are</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2772,7 +2896,180 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-switch-theme-colour"><a class="link" href="#use-case-switch-theme-colour">C.15. Use case: Switch theme colour</a></h3>
+<h3 id="use-case-seek-resident-assistant-ra"><a class="link" href="#use-case-seek-resident-assistant-ra">C.15. Use case: Seek Resident Assistant (RA)</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find students' RA by name using keywords.</p>
+</li>
+<li>
+<p>CollegeZone shows a list of students and Resident assistants (RA).</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The given detail format is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CollegeZone shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list has all students and RA(s) with name that matches keywords.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. The list is empty</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-rate-friends"><a class="link" href="#use-case-rate-friends">C.16. Use case: Rate friends</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list or show students of a particular level of friendship.</p>
+</li>
+<li>
+<p>CollegeZone shows a list of students.</p>
+</li>
+<li>
+<p>User requests to rate one or more student in the list.</p>
+</li>
+<li>
+<p>CollegeZone rates and changes the level of friendship of the student(s).</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. CollegeZone shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. The given detail format is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. CollegeZone shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-show-student"><a class="link" href="#use-case-show-student">C.17. Use case: Show student</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to show student by level of friendship using valid value.</p>
+</li>
+<li>
+<p>CollegeZone shows a list of students of a particular level of friendship.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The given detail format is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CollegeZone shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list has all students with level of friendship that matches input value.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-switch-theme-colour"><a class="link" href="#use-case-switch-theme-colour">C.18. Use case: Switch theme colour</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2820,7 +3117,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-history"><a class="link" href="#use-case-history">C.16. Use case: History</a></h3>
+<h3 id="use-case-history"><a class="link" href="#use-case-history">C.19. Use case: History</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2859,7 +3156,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-clear"><a class="link" href="#use-case-clear">C.17. Use case: Clear</a></h3>
+<h3 id="use-case-clear"><a class="link" href="#use-case-clear">C.20. Use case: Clear</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2898,7 +3195,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-exit-collegezone"><a class="link" href="#use-case-exit-collegezone">C.18. Use case: Exit CollegeZone</a></h3>
+<h3 id="use-case-exit-collegezone"><a class="link" href="#use-case-exit-collegezone">C.21. Use case: Exit CollegeZone</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3147,7 +3444,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 14:12:01 UTC
+Last updated 2018-04-14 16:20:14 UTC
 </div>
 </div>
 </body>

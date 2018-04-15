@@ -1636,9 +1636,6 @@ supports undoing and redoing of commands that modifies the state of the <em>Coll
 <code>DeleteGoalCommandParser</code> parses the <code>INDEX</code>:<br>
 e.g.Parsed index : 1<br></p>
 </div>
-<div class="paragraph">
-<p>The following is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("goal remove 1")</code> API call.<br></p>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/DeleteGoalSeqDiagram.PNG" alt="DeleteGoalSeqDiagram" width="800">
@@ -1646,7 +1643,7 @@ e.g.Parsed index : 1<br></p>
 <div class="title">Figure 25. <em>Interactions Inside the Logic Component for the <code>-goal</code> Command</em></div>
 </div>
 <div class="paragraph">
-<p><code>DeleteGoalCommandParser`Creates a `DeleteGoalCommand</code> class and passes the index as argument.
+<p><code>DeleteGoalCommandParser</code> creates a <code>DeleteGoalCommand</code> class and passes the index as argument.
 It deletes the goal corresponding to the index locally and runs the execution which calls the model
 The filtered goals list and deletion of the specified Goal object occurs. The filtered goals list is updated and retrieved.
 The UI component displays the deletion of goal in the goal list panel and the storage component deletes the details of the deleted goal in the address book storage.</p>
@@ -1688,7 +1685,7 @@ On the other hand, <code>FIELD</code> only accepts 3 keywords: <code>importance<
 </div>
 <div class="paragraph">
 <p>Upon execution of <code>SortGoalCommand</code>, a <code>Comparator&lt;Goal&gt;</code> will be initialised based on the sort type it receives.
-A <code>sortPersons</code> function call will be made to <code>Model</code>, which propagates down to <code>UniqueGoalList</code>, where the sorting of the <code>internalList</code> occurs.<br>
+A <code>sortGoal</code> function call will be made to <code>Model</code>, which propagates down to <code>UniqueGoalList</code>, where the sorting of the <code>internalList</code> occurs.<br>
 The code below shows the switch statement used to define the type of sort the user wants in the <code>UniqueGoalList</code>.<br></p>
 </div>
 <div class="listingblock">
@@ -1731,11 +1728,9 @@ The code below shows the switch statement used to define the type of sort the us
 }</code></pre>
 </div>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>Once verified, the argument will be tokenized to identify your specified sort type. A `SortGoalCommand` object is then
- created with the identified sort type.</pre>
-</div>
+<div class="paragraph">
+<p>Once verified, the argument will be tokenized to identify your specified sort type. A <code>SortGoalCommand</code> object is then
+created with the identified sort type.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4217,7 +4212,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:58:08 UTC
+Last updated 2018-04-15 14:00:12 UTC
 </div>
 </div>
 </body>

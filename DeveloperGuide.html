@@ -49,15 +49,17 @@
 <li><a href="#logging">3.3. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
 <li><a href="#enhanced-find-command-since-v1-1">3.5. Enhanced Find Command [Since v1.1]</a></li>
-<li><a href="#logic-command-aliases-since-v1-1">3.6. Logic: Command Aliases [Since v1.1]</a></li>
+<li><a href="#command-aliases-since-v1-1">3.6. Command Aliases [Since v1.1]</a></li>
 <li><a href="#enhanced-tag-colours-since-v1-1">3.7. Enhanced tag colours [Since v1.1]</a></li>
 <li><a href="#targeted-add-and-edit-command-since-v1-2">3.8. Targeted add and edit command [Since v1.2]</a></li>
 <li><a href="#reminders-since-v1-4">3.9. Reminders [Since v1.4]</a></li>
-<li><a href="#goals">3.10. Goals</a></li>
-<li><a href="#switching-theme-mechanism">3.11. Switching theme mechanism</a></li>
-<li><a href="#meet-command-since-v1-2">3.12. Meet Command [Since v1.2]</a></li>
-<li><a href="#sort-command-since-v1-4">3.13. Sort Command [Since v1.4]</a></li>
-<li><a href="#rate-friends-since-v1-4">3.14. Rate friends [Since v1.4]</a></li>
+<li><a href="#goal-object-since-v1-2">3.10. Goal Object [Since v1.2]</a></li>
+<li><a href="#add-goal-mechanism-since-v1-3">3.11. Add goal mechanism [Since v1.3]</a></li>
+<li><a href="#sort-goal-mechanism-since-v1-5">3.12. Sort goal mechanism [Since v1.5]</a></li>
+<li><a href="#switching-theme-mechanism-since-v1-5">3.13. Switching theme mechanism [Since v1.5]</a></li>
+<li><a href="#meet-command-since-v1-2">3.14. Meet Command [Since v1.2]</a></li>
+<li><a href="#sort-command-since-v1-4">3.15. Sort Command [Since v1.4]</a></li>
+<li><a href="#rate-friends-since-v1-4">3.16. Rate friends [Since v1.4]</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -997,7 +999,7 @@ command feature to be able to find persons by tags.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logic-command-aliases-since-v1-1"><a class="link" href="#logic-command-aliases-since-v1-1">3.6. Logic: Command Aliases [Since v1.1]</a></h3>
+<h3 id="command-aliases-since-v1-1"><a class="link" href="#command-aliases-since-v1-1">3.6. Command Aliases [Since v1.1]</a></h3>
 <div class="paragraph">
 <p>CollegeZone users may now use shortcuts to perform desired tasks. These shortcuts are shown in the table below.</p>
 </div>
@@ -1104,45 +1106,31 @@ also makes it more eye catching for users.</p>
 <div class="paragraph">
 <p>As CollegeZone is catered toward NUS RC4 Residents, we have changed the attributes of a Person to hold:<br>
 <strong>Name, Mobile Number, Birthday, Level of Friendship, RC4 Unit Number, Meet up dates with RC4 students, RC4 CCAs and Tags</strong>.<br>
-This is done by removing unwanted attributes of a person and adding new attributes of a person.</p>
+This is done by removing unwanted attributes of a person and adding new attributes of a person.<br>
+The figure below shows the new atrributes for student in the class diagram.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/RCPersonClass.JPG" alt="RCPersonClass" width="450">
+<img src="images/RC4ModelComponenetClass.JPG" alt="RC4ModelComponenetClass" width="800">
 </div>
 <div class="title">Figure 19. Class diagram for Student</div>
 </div>
 <div class="sect3">
-<h4 id="aspect-nature-of-new-attributes"><a class="link" href="#aspect-nature-of-new-attributes">3.8.1. Aspect: Nature of new Attributes</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Birthday: Must be a valid date.</p>
-</li>
-<li>
-<p>Level Of Friendship: Level of friendship is an integer from 1 to 10. The level is indicated by the number of hearts via the UI.</p>
-</li>
-<li>
-<p>Unit Number: Must be a valid unit number in RC4.</p>
-</li>
-<li>
-<p>Meet Date: Must be a valid date.</p>
-</li>
-<li>
-<p>A RC4 resident is able to have multiple CCAs.</p>
-</li>
-</ul>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.8.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect</strong>: Displaying level of friendship in <code>CollegeZone</code> UI.</p>
 </div>
+<div class="paragraph">
+<p><strong>Alternative 1(current choice)</strong>: <code>Level of Friendship</code> is displayed as a string of heart symbols.<br>
+<strong>Pros</strong>: Looks fanciful to user.<br>
+<strong>Cons</strong>: Might not be intuitive for the user to understand the meaning of heart symbols.</p>
 </div>
-<div class="sect3">
-<h4 id="aspect-displaying-level-of-friendship"><a class="link" href="#aspect-displaying-level-of-friendship">3.8.2. Aspect: displaying Level Of Friendship</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Level of Friendship is displayed as a string of heart symbols. It is represented this way as it more intuitive for users to understand what the symbols mean.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Alternative 2</strong>: <code>Level of Friendship</code> is displayed as a number. +<br>
+<strong>Pros</strong>: User easily understands the meaning of it.<br>
+<strong>Cons</strong>: Less eye catching to the user.</p>
 </div>
+<hr>
 </div>
 </div>
 <div class="sect2">
@@ -1371,7 +1359,7 @@ cause <code>calendarUpdate()</code> to run again and <code>CalendarPanel</code> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.9.3. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.9.3. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect</strong>: Deleting a <code>Reminder</code> from <code>CollegeZone</code>.</p>
 </div>
@@ -1387,12 +1375,11 @@ a large number of reminders to be listed out. This will in turn require the need
 <strong>Cons</strong>: Implementation of <code>DeleteReminderCommand</code> will be more difficult as we will have to integrate a find function to pick out
 the specific <code>Reminder</code> that the user wants to remove.</p>
 </div>
+<hr>
 </div>
 </div>
 <div class="sect2">
-<h3 id="goals"><a class="link" href="#goals">3.10. Goals</a></h3>
-<div class="sect3">
-<h4 id="introduction"><a class="link" href="#introduction">3.10.1. Introduction</a></h4>
+<h3 id="goal-object-since-v1-2"><a class="link" href="#goal-object-since-v1-2">3.10. Goal Object [Since v1.2]</a></h3>
 <div class="paragraph">
 <p>CollegeZone is designed for RC4 students to use. RC4 students often have goals that they want to achieve in life
 – Career goals, health goals, social goals, relationship goals etc. This additional goal feature is created for RC4 users to add and keep track of their goals throughout their stay.
@@ -1413,9 +1400,8 @@ This implementation allows RC4 students to set goals in <em>CollegeZone</em> –
  6. sort goal</code></pre>
 </div>
 </div>
-</div>
 <div class="sect3">
-<h4 id="implementation-of-goal-object"><a class="link" href="#implementation-of-goal-object">3.10.2. Implementation of Goal Object</a></h4>
+<h4 id="implementation-of-goal-object"><a class="link" href="#implementation-of-goal-object">3.10.1. Implementation of Goal Object</a></h4>
 <div class="paragraph">
 <p><strong>Goal objects consists of 5 attributes :</strong><br></p>
 </div>
@@ -1516,7 +1502,7 @@ The <em>Code-snippet 2 and 3</em> shows the conversion of the String value to Lo
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.10.3. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.10.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Representation of Goals level of importance in UI<br>
 <strong>Alternative 1 (current choice):</strong> Each level of importance have a number of stars related to it.<br>
@@ -1528,8 +1514,9 @@ The <em>Code-snippet 2 and 3</em> shows the conversion of the String value to Lo
 </div>
 <hr>
 </div>
-<div class="sect3">
-<h4 id="implementation-of-add-goal"><a class="link" href="#implementation-of-add-goal">3.10.4. Implementation of add goal</a></h4>
+</div>
+<div class="sect2">
+<h3 id="add-goal-mechanism-since-v1-3"><a class="link" href="#add-goal-mechanism-since-v1-3">3.11. Add goal mechanism [Since v1.3]</a></h3>
 <div class="paragraph">
 <p>Adding a goal into <em>CollegeZone</em> is facilitated by <code>AddGoalCommand</code>, which extends <code>UndoableCommand</code>, it
 supports undoing and redoing of commands that modifies the state of the <em>CollegeZone</em>.</p>
@@ -1607,9 +1594,8 @@ In the Storage component, the new goal added is stored in the address book stora
 <p>Note:
 - A goal that has just been added will be placed at the bottom of the goal list.<br></p>
 </div>
-</div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.10.5. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.11.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of adding start date time and completion status of goal<br>
 <strong>Alternative 1 (current choice):</strong> Having the current date time as the start date time and having a default completion status of a goal added.<br>
@@ -1628,21 +1614,54 @@ In the Storage component, the new goal added is stored in the address book stora
 <strong>Cons:</strong> The initial space in UI reserved for person list is not being used to display 2 lists, the person list and the goal list. This causes the UI to look clunky and overwhelming.<br>
 <strong>Alternative 2:</strong> Having a tab button in CollegeZone that allows user to switch between the person list panel and goal list panel.<br>
 <strong>Pros:</strong> Ability for user to switch to person list and goal list in the UI, which makes it look more user friendly.<br>
-<strong>Cons:</strong> As CollegeZone is a desktop application that has most interactions happen using a Command Line Interface (CLI), a new command to switch tabs between goal list and person list needs to be implemented.<br>
----</p>
+<strong>Cons:</strong> As CollegeZone is a desktop application that has most interactions happen using a Command Line Interface (CLI), a new command to switch tabs between goal list and person list needs to be implemented.<br></p>
 </div>
+<hr>
 </div>
 <div class="sect3">
-<h4 id="implementation-of-delete-goal"><a class="link" href="#implementation-of-delete-goal">3.10.6. Implementation of delete goal</a></h4>
+<h4 id="delete-goal-mechanism-since-v1-4"><a class="link" href="#delete-goal-mechanism-since-v1-4">3.11.2. Delete goal mechanism [Since v1.4]</a></h4>
 <div class="paragraph">
-<p>All goal commands are event driven.<br>
+<p>Deleting a goal from <em>CollegeZone</em> is facilitated by <code>DeleteGoalCommand</code>, which extends <code>UndoableCommand</code>, it
+supports undoing and redoing of commands that modifies the state of the <em>CollegeZone</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteGoalCommand</span> <span class="directive">extends</span> UndoableCommand {
+<span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
+        <span class="comment">// ... DeleteGoalCommand logic ...</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the flow of operation from the point <em>CollegeZone</em> receives an input to the output of the result.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddGoalSeqDiagram.PNG" alt="AddGoalSeqDiagram" width="800">
+</div>
+<div class="title">Figure 25. <em>Interactions Inside the Logic Component for the <code>+g</code> Command</em></div>
+</div>
+<div class="paragraph">
+<p>AddGoalCommand is implemented in this way:</p>
+</div>
+<div class="paragraph">
+<p>In the Logic component, <code>AddressBookParser</code> will parse the user&#8217;s input and detects if add goal keyword contains correct parsing keywords after.
+For example, e.g. +g text/eat healthily impt/9
+<code>AddGoalCommandParser</code> parses the input by extracting the input text and importance,<br>
+e.g.Parsed text : eat healthily<br>
+    Parsed importance : 9<br>
+Everytime a goal is added, the start date time of the goal will be recorded down in real time and it&#8217;s completion
+status will be "ongoing" by default.
+All goal commands are event driven.<br>
 The following is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("goal remove 1")</code> API call.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/GoalHighLevelSequenceDiagram.jpg" alt="GoalHighLevelSequenceDiagram" width="800">
+<img src="images/DeleteGoalSeqDiagram.PNG" alt="DeleteGoalSeqDiagram" width="800">
 </div>
-<div class="title">Figure 25. Goal delete Sequence Diagram</div>
+<div class="title">Figure 26. <em>Interactions Inside the Logic Component for the <code>-goal</code> Command</em></div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1745,11 +1764,21 @@ are very similar to how CollegeZone implements its contacts. This is implemented
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.10.7. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.11.3. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Deciding the field for user to enter to delete the goal<br>
+<strong>Alternative 1 (current choice):</strong> Using <code>INDEX</code> of goals in goal list panel<br>
+<strong>Pros:</strong> Easier to implement as it&#8217;s implementation is similar to deleting a student and easier for the user to type in the command as <code>INDEX</code> is an integer<br>
+<strong>Cons:</strong>  User might get confused as we have 2 list panels with <code>INDEX</code><br>
+<strong>Alternative 2: </strong> Using <code>GOAL_TEXT</code> of goals in goal list panel<br>
+<strong>Pros:</strong> Lower chance for user to use delete goal command wrongly<br>
+<strong>Cons:</strong> User have to type in a longer command</p>
+</div>
 <hr>
 </div>
-<div class="sect3">
-<h4 id="implementation-of-sort-goal"><a class="link" href="#implementation-of-sort-goal">3.10.8. Implementation of sort goal</a></h4>
+</div>
+<div class="sect2">
+<h3 id="sort-goal-mechanism-since-v1-5"><a class="link" href="#sort-goal-mechanism-since-v1-5">3.12. Sort goal mechanism [Since v1.5]</a></h3>
 <div class="paragraph">
 <p>The sorting goal mechanism is facilitated by <code>SortGoalCommandParser</code> and <code>SortGoalCommand</code>, with both classes residing
 in the <code>Logic</code> component of CollegeZone. <code>SortGoalCommand</code> in not undoable.</p>
@@ -1767,7 +1796,7 @@ On the other hand, <code>FIELD</code> only accepts 3 keywords: <code>importance<
 <div class="content">
 <img src="images/SortGoalSeqDiagram.PNG" alt="SortGoalSeqDiagram" width="800">
 </div>
-<div class="title">Figure 26. Interactions Inside the Logic Component for the <code>sortgoal importance o/ascending</code> Command</div>
+<div class="title">Figure 27. Interactions Inside the Logic Component for the <code>sortgoal importance o/ascending</code> Command</div>
 </div>
 <div class="paragraph">
 <p>Upon execution of <code>SortGoalCommand</code>, a <code>Comparator&lt;Goal&gt;</code> will be initialised based on the sort type it receives.
@@ -1832,9 +1861,8 @@ If the goal list is found to be empty, a <code>CommandException</code> will be t
 </tr>
 </table>
 </div>
-</div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.10.9. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.12.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Deciding the fields and orders that the goal list can be sorted<br>
 <strong>Alternative 1:</strong> Sort only one field and in one order<br>
@@ -1842,9 +1870,9 @@ If the goal list is found to be empty, a <code>CommandException</code> will be t
 <strong>Cons:</strong> Less customization of sort goal command.<br>
 <strong>Alternative 2 (current choice): </strong> Sort in multiple fields and two orders<br>
 <strong>Pros:</strong> More customization for user<br>
-<strong>Cons:</strong> User have to type in a longer command
----</p>
+<strong>Cons:</strong> User have to type in a longer command</p>
 </div>
+<hr>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Initialising of <code>Comparator&lt;Goal&gt;</code><br>
 <strong>Alternative 1:</strong> Initialise in <code>SortGoalCommand</code><br>
@@ -1852,13 +1880,13 @@ If the goal list is found to be empty, a <code>CommandException</code> will be t
 <strong>Cons:</strong> Hard for new developers to follow as other commands like <code>AddGoalCommand</code> handles object creation in its parser.<br>
 <strong>Alternative 2 (current choice): </strong> Initialise in <code>UniqueGoalList</code><br>
 <strong>Pros:</strong> Straightforward as initialises the <code>Comparator</code> where it is used.<br>
-<strong>Cons:</strong> <code>UniquePersonList</code> is at a lower level and should only handle a minimal set of <code>Goal</code> related operations, and not logical operations like string matching.<br>
----</p>
+<strong>Cons:</strong> <code>UniquePersonList</code> is at a lower level and should only handle a minimal set of <code>Goal</code> related operations, and not logical operations like string matching.<br></p>
 </div>
+<hr>
 </div>
 </div>
 <div class="sect2">
-<h3 id="switching-theme-mechanism"><a class="link" href="#switching-theme-mechanism">3.11. Switching theme mechanism</a></h3>
+<h3 id="switching-theme-mechanism-since-v1-5"><a class="link" href="#switching-theme-mechanism-since-v1-5">3.13. Switching theme mechanism [Since v1.5]</a></h3>
 <div class="paragraph">
 <p>CollegeZone has multiple themes for the user to choose from. Currently, there are 3 themes implemented.
 Namely, <code>dark</code> theme, <code>bubblegum</code> theme and <code>light</code> theme. This command is not undoable.</p>
@@ -1890,7 +1918,7 @@ The following code snippet shows how the theme switch event is handled.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.11.1. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.13.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Storing user choice of theme<br>
 <strong>Alternative 1 (current choice):</strong> User prefs will be set to <code>dark</code> theme colour by default<br>
@@ -1898,13 +1926,13 @@ The following code snippet shows how the theme switch event is handled.<br></p>
 <strong>Cons:</strong> <em>CollegeZone</em> does not remember user&#8217;s preferred theme upon restarting <em>CollegeZone</em><br>
 <strong>Alternative 2 (current choice): </strong> Initialising in <code>UserPref</code> <br>
 <strong>Pros:</strong> <em>CollegeZone</em> will remember user&#8217;s preferred theme upon restarting <em>CollegeZone</em> <br>
-<strong>Cons:</strong> More coding required to store theme colour
----</p>
+<strong>Cons:</strong> More coding required to store theme colour</p>
 </div>
+<hr>
 </div>
 </div>
 <div class="sect2">
-<h3 id="meet-command-since-v1-2"><a class="link" href="#meet-command-since-v1-2">3.12. Meet Command [Since v1.2]</a></h3>
+<h3 id="meet-command-since-v1-2"><a class="link" href="#meet-command-since-v1-2">3.14. Meet Command [Since v1.2]</a></h3>
 <div class="paragraph">
 <p>The new meet up command was implemented specifically to provide a platform in CollegeZone for RC4 students to set up
 meetings with other students with ease.</p>
@@ -1919,7 +1947,7 @@ The <code>DeleteMeetCommand</code> allows you to delete a <code>MeetDate</code> 
 Hence, both <code>MeetCommand</code> and <code>DeleteMeetCommand</code> are implemented as <code>UndoableCommand</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-br-2"><a class="link" href="#implementation-br-2">3.12.1. Implementation<br></a></h4>
+<h4 id="implementation-br-2"><a class="link" href="#implementation-br-2">3.14.1. Implementation<br></a></h4>
 <div class="paragraph">
 <p><strong>Meet Object</strong><br></p>
 </div>
@@ -2054,7 +2082,7 @@ cause <code>calendarUpdate()</code> to run again and <code>CalendarPanel</code> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.12.2. Design Considerations</a></h4>
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">3.14.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect</strong>: Deleting a <code>meetDate</code> from <code>CollegeZone</code>.</p>
 </div>
@@ -2072,7 +2100,7 @@ the specific <code>meetDates</code> or 'Person' that the user wants to remove.</
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-command-since-v1-4"><a class="link" href="#sort-command-since-v1-4">3.13. Sort Command [Since v1.4]</a></h3>
+<h3 id="sort-command-since-v1-4"><a class="link" href="#sort-command-since-v1-4">3.15. Sort Command [Since v1.4]</a></h3>
 <div class="paragraph">
 <p>The Sort Command is facilitated by <code>SortCommandParser</code> and <code>SortCommand</code>, with both classes residing in the <code>Logic</code> component of the address book. Since the address book state will be modified during the sorting process, the <code>sort</code> has to be undoable.</p>
 </div>
@@ -2112,7 +2140,7 @@ Implementation of the Sort Command requires both the manipulation of <code>Logic
 <div class="content">
 <img src="images/SortPersonSdForLogic.png" alt="SortPersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 27. Interactions Inside the Logic Component for the <code>sort 1</code> Command_</div>
+<div class="title">Figure 28. Interactions Inside the Logic Component for the <code>sort 1</code> Command_</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2127,7 +2155,7 @@ If the list is found to be empty, an <code>CommandException</code> will be throw
 </table>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">3.13.1. Design Considerations</a></h4>
+<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">3.15.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Initialising of <code>Comparator&lt;Person&gt;</code><br>
 <strong>Alternative 1:</strong> Initialise in <code>SortCommand</code><br>
@@ -2150,7 +2178,7 @@ If the list is found to be empty, an <code>CommandException</code> will be throw
 </div>
 </div>
 <div class="sect2">
-<h3 id="rate-friends-since-v1-4"><a class="link" href="#rate-friends-since-v1-4">3.14. Rate friends [Since v1.4]</a></h3>
+<h3 id="rate-friends-since-v1-4"><a class="link" href="#rate-friends-since-v1-4">3.16. Rate friends [Since v1.4]</a></h3>
 <div class="paragraph">
 <p>The Rate friends feature allows RC4 residents to rate their friends and change their levels of friendship.
 This feature is implemented by the <code>RateCommand</code> and <code>RateCommandParser</code> in the Logic component of the CollegeZone code.
@@ -2237,7 +2265,7 @@ As seen in the code below, there will be a error message informing the user that
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">3.14.1. Design Considerations</a></h4>
+<h4 id="design-considerations-11"><a class="link" href="#design-considerations-11">3.16.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of <code>RateCommand</code>.<br>
 <strong>Alternative 1 (current choice):</strong> Creates a new <code>Person</code> object which copies all its respective personal details and adds a new <code>LevelOfFriendship</code> value.<br>
@@ -2310,7 +2338,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 28. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 29. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -4301,7 +4329,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:18:45 UTC
+Last updated 2018-04-15 10:42:08 UTC
 </div>
 </div>
 </body>

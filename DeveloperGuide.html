@@ -54,7 +54,7 @@
 <li><a href="#targeted-add-and-edit-command-since-v1-2">3.8. Targeted add and edit command [Since v1.2]</a></li>
 <li><a href="#reminders-since-v1-4">3.9. Reminders [Since v1.4]</a></li>
 <li><a href="#goals">3.10. Goals</a></li>
-<li><a href="#theme-enhancement">3.11. Theme Enhancement</a></li>
+<li><a href="#switching-theme-mechanism">3.11. Switching theme mechanism</a></li>
 <li><a href="#meet-command-since-v1-2">3.12. Meet Command [Since v1.2]</a></li>
 <li><a href="#sorting-mechanism">3.13. Sorting mechanism</a></li>
 <li><a href="#rate-friends-since-v1-4">3.14. Rate friends [Since v1.4]</a></li>
@@ -89,27 +89,32 @@
 <li><a href="#use-cases">Appendix C: Use Cases</a>
 <ul class="sectlevel2">
 <li><a href="#use-case-add-student">C.1. Use case: Add student</a></li>
-<li><a href="#use-case-delete-student">C.2. Use case: Delete student</a></li>
-<li><a href="#use-case-edit-student">C.3. Use case: Edit student</a></li>
-<li><a href="#use-case-find-student">C.4. Use case: Find student</a></li>
-<li><a href="#use-case-select-student-or-goal">C.5. Use case: Select student or goal</a></li>
-<li><a href="#use-case-add-reminder">C.6. Use case: Add reminder</a></li>
-<li><a href="#use-case-delete-reminder">C.7. Use case: Delete reminder</a></li>
-<li><a href="#use-case-meet-student">C.8. Use case: Meet student</a></li>
-<li><a href="#use-case-sort-students">C.9. Use case: Sort students</a></li>
-<li><a href="#use-case-add-goal">C.10. Use case: Add goal</a></li>
-<li><a href="#use-case-edit-goal">C.11. Use case: Edit goal</a></li>
-<li><a href="#use-case-delete-goal">C.12. Use case: Delete goal</a></li>
-<li><a href="#use-case-complete-goal">C.13. Use case: Complete goal</a></li>
-<li><a href="#use-case-ongoing-goal">C.14. Use case: Ongoing goal</a></li>
-<li><a href="#use-case-sort-goal">C.15. Use case: Sort goal</a></li>
-<li><a href="#use-case-seek-resident-assistant-ra">C.16. Use case: Seek Resident Assistant (RA)</a></li>
-<li><a href="#use-case-rate-friends">C.17. Use case: Rate friends</a></li>
-<li><a href="#use-case-show-student">C.18. Use case: Show student</a></li>
-<li><a href="#use-case-switch-theme-colour">C.19. Use case: Switch theme colour</a></li>
-<li><a href="#use-case-history">C.20. Use case: History</a></li>
-<li><a href="#use-case-clear">C.21. Use case: Clear</a></li>
-<li><a href="#use-case-exit-collegezone">C.22. Use case: Exit CollegeZone</a></li>
+<li><a href="#use-case-list-students">C.2. Use case: List students</a></li>
+<li><a href="#use-case-delete-student">C.3. Use case: Delete student</a></li>
+<li><a href="#use-case-edit-student">C.4. Use case: Edit student</a></li>
+<li><a href="#use-case-find-student">C.5. Use case: Find student</a></li>
+<li><a href="#use-case-select-student-or-goal">C.6. Use case: Select student or goal</a></li>
+<li><a href="#use-case-add-reminder">C.7. Use case: Add reminder</a></li>
+<li><a href="#use-case-delete-reminder">C.8. Use case: Delete reminder</a></li>
+<li><a href="#use-case-meet-student">C.9. Use case: Meet student</a></li>
+<li><a href="#use-case-sort-students">C.10. Use case: Sort students</a></li>
+<li><a href="#use-case-add-goal">C.11. Use case: Add goal</a></li>
+<li><a href="#use-case-edit-goal">C.12. Use case: Edit goal</a></li>
+<li><a href="#use-case-delete-goal">C.13. Use case: Delete goal</a></li>
+<li><a href="#use-case-complete-goal">C.14. Use case: Complete goal</a></li>
+<li><a href="#use-case-ongoing-goal">C.15. Use case: Ongoing goal</a></li>
+<li><a href="#use-case-sort-goal">C.16. Use case: Sort goal</a></li>
+<li><a href="#use-case-seek-resident-assistant-ra">C.17. Use case: Seek Resident Assistant (RA)</a></li>
+<li><a href="#use-case-rate-friends">C.18. Use case: Rate friends</a></li>
+<li><a href="#use-case-show-student">C.19. Use case: Show student</a></li>
+<li><a href="#use-case-switch-theme-colour">C.20. Use case: Switch theme colour</a></li>
+<li><a href="#use-case-undo">C.21. Use case: Undo</a></li>
+<li><a href="#use-case-redo">C.22. Use case: Redo</a></li>
+<li><a href="#use-case-seek-resident-assistant-ra-2">C.23. Use case: Seek Resident Assistant (RA)</a></li>
+<li><a href="#use-case-history">C.24. Use case: History</a></li>
+<li><a href="#use-case-clear">C.25. Use case: Clear</a></li>
+<li><a href="#use-case-help">C.26. Use case: Help</a></li>
+<li><a href="#use-case-exit-collegezone">C.27. Use case: Exit CollegeZone</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -994,10 +999,7 @@ command feature to be able to find persons by tags.</p>
 <div class="sect2">
 <h3 id="logic-command-aliases-since-v1-1"><a class="link" href="#logic-command-aliases-since-v1-1">3.6. Logic: Command Aliases [Since v1.1]</a></h3>
 <div class="paragraph">
-<p>CollegeZone users may now use shortcuts to perform desired tasks. These shortcuts are shown in figure 3.6.1.</p>
-</div>
-<div class="paragraph">
-<p><strong>Figure 3.6.1</strong>:</p>
+<p>CollegeZone users may now use shortcuts to perform desired tasks. These shortcuts are shown in the table below.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <colgroup>
@@ -1378,24 +1380,17 @@ The main reason behind this implementation is because setting goals gives you <s
 This implementation allows RC4 students to set goals in <em>CollegeZone</em> – big or small ones - so
  that they will be reminded of the goals that they have set for themselves.</p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre> In addition as a majority of RC4 residents are NUS students, when students set their own goals, they
-  take responsibility and ownership of their learning goals. +
-Goals are meant only for the user, and the user can have many goals stored in CollegeZone.</pre>
-</div>
-</div>
 <div class="paragraph">
 <p><strong>Goal features:</strong></p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>-add goal
--edit goal
--delete goal
--complete goal
--ongoing goal
--sort goal</pre>
+<pre class="CodeRay highlight"><code> 1. add goal
+ 2. edit goal
+ 3. delete goal
+ 4. complete goal
+ 5. ongoing goal
+ 6. sort goal</code></pre>
 </div>
 </div>
 </div>
@@ -1425,7 +1420,7 @@ Goals are meant only for the user, and the user can have many goals stored in Co
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/CollegeZoneGoalModelClassDiagram.JPG" alt="CollegeZoneGoalModelClassDiagram" width="800">
+<img src="images/CollegeZoneGoalModelClassDiagram.JPG" alt="CollegeZoneGoalModelClassDiagram" width="750">
 </div>
 <div class="title">Figure 22. <em>Class diagram of Goal</em></div>
 </div>
@@ -1492,9 +1487,29 @@ The <em>Code-snippet 2 and 3</em> shows the conversion of the String value to Lo
     }</code></pre>
 </div>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>All goals will have a string of stars (indicating importance) in a yellow border directly below the goal text in the goal list panel.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
-<h4 id="implementation-of-add-goal"><a class="link" href="#implementation-of-add-goal">3.10.3. Implementation of add goal</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.10.3. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Representation of Goals level of importance in UI<br>
+<strong>Alternative 1 (current choice):</strong> Each level of importance have a number of stars related to it.<br>
+<strong>Pros:</strong> Ability for the user to differentiate the Goals with higher level of importance compared to those with lower level of importance.<br>
+<strong>Cons:</strong> The goal list in the UI might look messy to the user without having a sort Goals option as the list of goals is displayed based on when it was added.<br>
+<strong>Alternative 2:</strong> Having an additional sort goal command<br>
+<strong>Pros:</strong> It is simple and easy to understand.<br>
+<strong>Cons:</strong> It requires extra methods to implement the sort function.<br></p>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="implementation-of-add-goal"><a class="link" href="#implementation-of-add-goal">3.10.4. Implementation of add goal</a></h4>
 <div class="paragraph">
 <p>Adding a goal into <em>CollegeZone</em> is facilitated by <code>AddGoalCommand</code>, which extends <code>UndoableCommand</code>, it
 supports undoing and redoing of commands that modifies the state of the <em>CollegeZone</em>.</p>
@@ -1514,128 +1529,22 @@ supports undoing and redoing of commands that modifies the state of the <em>Coll
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/AddGoalSeqDiagram.png" alt="AddGoalSeqDiagram" width="800">
+<img src="images/AddGoalSeqDiagram.PNG" alt="AddGoalSeqDiagram" width="800">
 </div>
 <div class="title">Figure 23. <em>Interactions Inside the Logic Component for the <code>+g</code> Command</em></div>
 </div>
 <div class="paragraph">
 <p>AddGoalCommand is implemented in this way:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Logic</p>
-<div class="ulist">
-<ul>
-<li>
-<p>AddressBookParser:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Detects if add goal keyword contains correct parsing keywords after<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. +g text/eat healthily impt/9</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>AddGoalCommandParser: (More about this method will be mentioned later)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Parses the input by extracting the input text and importance<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Parsed text : eat healthily<br></p>
-</li>
-<li>
-<p>Parsed importance : 9</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Creates a AddGoalCommand class and passes the text and importance and string as arguments</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>AddGoalCommand:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Adds the new goal to the list locally</p>
-</li>
-<li>
-<p>Runs the execution which calls the model</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Model</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Calls the model and gets the goals list</p>
-</li>
-<li>
-<p>Adds the new goal into the goals list</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Ui</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Displays the new goal added in the goal list panel</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Storage</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Stores the new goal added in the address book storage</p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
 <div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>All goals will have a string of stars (indicating importance) in a yellow border directly below the goal text in the goal list panel.</p>
-</li>
-<li>
-<p>Goal that are just added will be placed at the bottom of the goal list.<br></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The <code>AddGoalCommandParser</code> returns <code>AddGoalCommand</code> after execution, which will be further processed by <code>logic</code> component.</p>
-</div>
-<div class="paragraph">
-<p>AddGoalCommandParser is implemented in this way:</p>
+<p>In the Logic component, <code>AddressBookParser</code> will parse the user&#8217;s input and detects if add goal keyword contains correct parsing keywords after.
+For example, e.g. +g text/eat healthily impt/9
+<code>AddGoalCommandParser</code> parses the input by extracting the input text and importance,<br>
+e.g.Parsed text : eat healthily<br>
+    Parsed importance : 9<br>
+Everytime a goal is added, the start date time of the goal will be recorded down in real time and it&#8217;s completion
+status will be "ongoing" by default.
+<code>AddGoalCommandParser</code> is implemented in this way:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1663,16 +1572,24 @@ supports undoing and redoing of commands that modifies the state of the <em>Coll
         } <span class="keyword">catch</span> (IllegalValueException ive) {
             <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(ive.getMessage(), ive);
         }
-    }</code></pre>
+    }
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Notice that everytime a goal is added, the start date time of the goal will be recorded down in real time and it&#8217;s completion
-status will be "ongoing" by default.</p>
+<p>The <code>AddGoalCommandParser</code> returns <code>AddGoalCommand</code> after execution, passes the text and importance and string as arguments which will be further processed by <code>logic</code> component.
+<code>AddGoalCommand</code> adds the new goal to the list locally and runs the execution which calls the model.
+In the Model component, the <code>UniqueGoalList</code> is called and the new goal is added to the list.
+In the Ui component, the new goal added is displayed in the goal list panel.
+In the Storage component, the new goal added is stored in the address book storage</p>
+</div>
+<div class="paragraph">
+<p>Note:
+- A goal that has just been added will be placed at the bottom of the goal list.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.10.4. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.10.5. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of adding start date time and completion status of goal<br>
 <strong>Alternative 1 (current choice):</strong> Having the current date time as the start date time and having a default completion status of a goal added.<br>
@@ -1685,27 +1602,18 @@ status will be "ongoing" by default.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Representation of Goals level of importance in UI<br>
-<strong>Alternative 1 (current choice):</strong> Each level of importance have a number of stars related to it.<br>
-<strong>Pros:</strong> Ability for the user to differentiate the Goals with higher level of importance compared to those with lower level of importance.<br>
-<strong>Cons:</strong> The goal list in the UI might look messy to the user without having a sort Goals option as the list of goals is displayed based on when it was added.<br>
-<strong>Alternative 2:</strong> Having an additional sort goal command<br>
-<strong>Pros:</strong> It is simple and easy to understand.<br>
-<strong>Cons:</strong> It requires extra methods to implement the sort function.<br></p>
-</div>
-<hr>
-<div class="paragraph">
 <p><strong>Aspect:</strong> Representation of Goals in UI<br>
 <strong>Alternative 1 (current choice):</strong> Having a goal list panel beside our current person list panel.<br>
 <strong>Pros:</strong> Ability for the user to differentiate the Goals with higher level of importance compared to those with lower level of importance.<br>
 <strong>Cons:</strong> The initial space in UI reserved for person list is not being used to display 2 lists, the person list and the goal list. This causes the UI to look clunky and overwhelming.<br>
 <strong>Alternative 2:</strong> Having a tab button in CollegeZone that allows user to switch between the person list panel and goal list panel.<br>
 <strong>Pros:</strong> Ability for user to switch to person list and goal list in the UI, which makes it look more user friendly.<br>
-<strong>Cons:</strong> As CollegeZone is a desktop application that has most interactions happen using a Command Line Interface (CLI), a new command to switch tabs between goal list and person list needs to be implemented.<br></p>
+<strong>Cons:</strong> As CollegeZone is a desktop application that has most interactions happen using a Command Line Interface (CLI), a new command to switch tabs between goal list and person list needs to be implemented.<br>
+---</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-of-delete-goal"><a class="link" href="#implementation-of-delete-goal">3.10.5. Implementation of delete goal</a></h4>
+<h4 id="implementation-of-delete-goal"><a class="link" href="#implementation-of-delete-goal">3.10.6. Implementation of delete goal</a></h4>
 <div class="paragraph">
 <p>All goal commands are event driven.<br>
 The following is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("goal remove 1")</code> API call.<br></p>
@@ -1714,11 +1622,7 @@ The following is the Sequence Diagram for interactions within the <code>Logic</c
 <div class="content">
 <img src="images/GoalHighLevelSequenceDiagram.jpg" alt="GoalHighLevelSequenceDiagram" width="800">
 </div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Figure 3.10.0.1: Goal delete Sequence Diagram</pre>
-</div>
+<div class="title">Figure 24. Goal delete Sequence Diagram</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1821,17 +1725,163 @@ are very similar to how CollegeZone implements its contacts. This is implemented
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.10.6. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.10.7. Design Considerations</a></h4>
 <hr>
 </div>
 <div class="sect3">
-<h4 id="implementation-of-sort-goal"><a class="link" href="#implementation-of-sort-goal">3.10.7. Implementation of sort goal</a></h4>
+<h4 id="implementation-of-sort-goal"><a class="link" href="#implementation-of-sort-goal">3.10.8. Implementation of sort goal</a></h4>
+<div class="paragraph">
+<p>The sorting goal mechanism is facilitated by <code>SortGoalCommandParser</code> and <code>SortGoalCommand</code>, with both classes residing
+in the <code>Logic</code> component of CollegeZone. <code>SortGoalCommand</code> in not undoable.</p>
+</div>
+<div class="paragraph">
+<p><code>SortGoalCommandParser</code> takes in an arguments in the form of <code>FIELD</code> and <code>ORDER</code> that defines how <code>UniqueGoalList</code>
+should be sorted. You may customise the sort goal operation, with <code>FIELD</code> specifying the goal field to sort and <code>ORDER</code>
+specifying the type of sort order. It checks for validity against a few keywords. For example, <code>ORDER</code> only accepts 2 keywords: <code>ascending</code> or <code>descending</code>.
+On the other hand, <code>FIELD</code> only accepts 3 keywords: <code>importance</code>, <code>startdatetime</code> and <code>completion</code>.</p>
+</div>
+<div class="paragraph">
+<p>The image below shows the interaction of sort the <code>Logic</code> component.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SortGoalSeqDiagram.PNG" alt="SortGoalSeqDiagram" width="800">
+</div>
+<div class="title">Figure 25. Interactions Inside the Logic Component for the <code>sortgoal importance o/ascending</code> Command</div>
+</div>
+<div class="paragraph">
+<p>Upon execution of <code>SortGoalCommand</code>, a <code>Comparator&lt;Goal&gt;</code> will be initialised based on the sort type it receives.
+A <code>sortPersons</code> function call will be made to <code>Model</code>, which propagates down to <code>UniqueGoalList</code>, where the sorting of the <code>internalList</code> occurs.<br>
+The code below shows the switch statement used to define the type of sort the user wants in the <code>UniqueGoalList</code>.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">UniqueGoalList</span> <span class="directive">implements</span> <span class="predefined-type">Iterable</span>&lt;Goal&gt; {
 
+    <span class="directive">public</span> <span class="type">void</span> sortGoal(<span class="predefined-type">String</span> sortField, <span class="predefined-type">String</span> sortOrder) <span class="directive">throws</span> EmptyGoalListException {
+        <span class="predefined-type">String</span> sortFieldAndOrder = sortField + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + sortOrder;
+        <span class="comment">//Comparator&lt;Goal&gt; comparatorImportance = Comparator.comparingInt(Goal::getImportance);</span>
+        <span class="keyword">switch</span> (sortFieldAndOrder) {
+        <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">importance ascending</span><span class="delimiter">&quot;</span></span>:
+            FXCollections.sort(internalList, (Goal goalA, Goal goalB) -&gt;goalA.getImportance()
+                    .compareTo(goalB.getImportance()));
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">importance descending</span><span class="delimiter">&quot;</span></span>:
+            FXCollections.sort(internalList, (Goal goalA, Goal goalB) -&gt;goalB.getImportance()
+                    .compareTo(goalA.getImportance()));
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">completion ascending</span><span class="delimiter">&quot;</span></span>:
+            FXCollections.sort(internalList, (Goal goalA, Goal goalB) -&gt; <span class="keyword">new</span> <span class="predefined-type">Boolean</span>(goalA.getCompletion().hasCompleted)
+                    .compareTo(goalB.getCompletion().hasCompleted));
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">completion descending</span><span class="delimiter">&quot;</span></span>:
+            FXCollections.sort(internalList, (Goal goalA, Goal goalB) -&gt; <span class="keyword">new</span> <span class="predefined-type">Boolean</span>(goalB.getCompletion().hasCompleted)
+                    .compareTo(goalA.getCompletion().hasCompleted));
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">startdatetime ascending</span><span class="delimiter">&quot;</span></span>:
+            FXCollections.sort(internalList, (Goal goalA, Goal goalB) -&gt;goalA.getStartDateTime()
+                    .compareTo(goalB.getStartDateTime()));
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">startdatetime descending</span><span class="delimiter">&quot;</span></span>:
+            FXCollections.sort(internalList, (Goal goalA, Goal goalB) -&gt;goalB.getStartDateTime()
+                    .compareTo(goalA.getStartDateTime()));
+            <span class="keyword">break</span>;
+
+        <span class="keyword">default</span>:
+            <span class="keyword">break</span>;
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Once verified, the argument will be tokenized to identify your specified sort type. A `SortGoalCommand` object is then
+ created with the identified sort type.</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the goal list is found to be empty, a <code>CommandException</code> will be thrown from <code>SortGoalCommand</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.10.9. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Deciding the fields and orders that the goal list can be sorted<br>
+<strong>Alternative 1:</strong> Sort only one field and in one order<br>
+<strong>Pros:</strong> Sort becomes a more intuitive command for user to type<br>
+<strong>Cons:</strong> Less customization of sort goal command.<br>
+<strong>Alternative 2 (current choice): </strong> Sort in multiple fields and two orders<br>
+<strong>Pros:</strong> More customization for user<br>
+<strong>Cons:</strong> User have to type in a longer command
+---</p>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Initialising of <code>Comparator&lt;Goal&gt;</code><br>
+<strong>Alternative 1:</strong> Initialise in <code>SortGoalCommand</code><br>
+<strong>Pros:</strong> Clear separation of concerns, <code>SortGoalCommandParser</code> to handle identifying of attribute to sort by only.<br>
+<strong>Cons:</strong> Hard for new developers to follow as other commands like <code>AddGoalCommand</code> handles object creation in its parser.<br>
+<strong>Alternative 2 (current choice): </strong> Initialise in <code>UniqueGoalList</code><br>
+<strong>Pros:</strong> Straightforward as initialises the <code>Comparator</code> where it is used.<br>
+<strong>Cons:</strong> <code>UniquePersonList</code> is at a lower level and should only handle a minimal set of <code>Goal</code> related operations, and not logical operations like string matching.<br>
+---</p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="theme-enhancement"><a class="link" href="#theme-enhancement">3.11. Theme Enhancement</a></h3>
-
+<h3 id="switching-theme-mechanism"><a class="link" href="#switching-theme-mechanism">3.11. Switching theme mechanism</a></h3>
+<div class="paragraph">
+<p>CollegeZone has multiple themes for the user to choose from. Currently, there are 3 themes implemented.
+Namely, <code>dark</code> theme, <code>bubblegum</code> theme and <code>light</code> theme. This command is not undoable.</p>
+</div>
+<div class="paragraph">
+<p>The switch theme mechanism is facilitated by <code>ThemeCommandParser</code> and <code>ThemeCommand</code>, with both classes residing
+in the <code>Logic</code> component of CollegeZone. <code>ThemeCommand</code> in not undoable.</p>
+</div>
+<div class="paragraph">
+<p><code>ThemeCommandParser</code> takes in an argument in the form of <code>THEME_COLOUR</code> that defines the theme colour of what CollegeZone
+will be. You may customise the theme colour you want out of the 3 that we have. It checks for validity against a few keywords.
+<code>THEME_COLOUR</code> only accepts 3 keywords: <code>light</code>, <code>dark</code> or <code>bubblegum</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>ThemeCommandParser</code> returns a new <code>ThemeCommand</code> object. <code>ThemeCommand</code> then executes the new
+event change by calling <code>ThemeSwitchRequestEvent</code>. The updating of theme colour will be
+done by <code>handleChangeThemeEvent</code> method.<br>
+The following code snippet shows how the theme switch event is handled.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handleChangeThemeEvent(ThemeSwitchRequestEvent event) {
+    themeColour = event.themeToChangeTo;
+    Platform.runLater(
+            <span class="local-variable">this</span>::changeThemeColour
+    );
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.11.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Storing user choice of theme<br>
+<strong>Alternative 1 (current choice):</strong> User prefs will be set to <code>dark</code> theme colour by default<br>
+<strong>Pros:</strong> Lesser coding required as there&#8217;s no need to store theme colour as a part of the model component<br>
+<strong>Cons:</strong> <em>CollegeZone</em> does not remember user&#8217;s preferred theme upon restarting <em>CollegeZone</em><br>
+<strong>Alternative 2 (current choice): </strong> Initialising in <code>UserPref</code> <br>
+<strong>Pros:</strong> <em>CollegeZone</em> will remember user&#8217;s preferred theme upon restarting <em>CollegeZone</em> <br>
+<strong>Cons:</strong> More coding required to store theme colour
+---</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="meet-command-since-v1-2"><a class="link" href="#meet-command-since-v1-2">3.12. Meet Command [Since v1.2]</a></h3>
@@ -1873,9 +1923,7 @@ Implementation of Sorting Mechanism requires both the manipulation of <code>Logi
 <div class="content">
 <img src="images/SortPersonSdForLogic.png" alt="SortPersonSdForLogic" width="800">
 </div>
-</div>
-<div class="paragraph">
-<p><em>Figure 4.5.2 : Interactions Inside the Logic Component for the <code>sort 1</code> Command</em></p>
+<div class="title">Figure 26. Interactions Inside the Logic Component for the <code>sort 1</code> Command_</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1890,7 +1938,7 @@ If the list is found to be empty, an <code>CommandException</code> will be throw
 </table>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.13.1. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.13.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Initialising of <code>Comparator&lt;Person&gt;</code><br>
 <strong>Alternative 1:</strong> Initialise in <code>SortCommand</code><br>
@@ -2000,7 +2048,7 @@ As seen in the code below, there will be a error message informing the user that
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.14.1. Design Considerations</a></h4>
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">3.14.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of <code>RateCommand</code>.<br>
 <strong>Alternative 1 (current choice):</strong> Creates a new <code>Person</code> object which copies all its respective personal details and adds a new <code>LevelOfFriendship</code> value.<br>
@@ -2073,7 +2121,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 24. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 27. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -2574,7 +2622,36 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-delete-student"><a class="link" href="#use-case-delete-student">C.2. Use case: Delete student</a></h3>
+<h3 id="use-case-list-students"><a class="link" href="#use-case-list-students">C.2. Use case: List students</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list students</p>
+</li>
+<li>
+<p>CollegeZone shows a list of students</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-delete-student"><a class="link" href="#use-case-delete-student">C.3. Use case: Delete student</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2625,7 +2702,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-edit-student"><a class="link" href="#use-case-edit-student">C.3. Use case: Edit student</a></h3>
+<h3 id="use-case-edit-student"><a class="link" href="#use-case-edit-student">C.4. Use case: Edit student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2683,7 +2760,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-find-student"><a class="link" href="#use-case-find-student">C.4. Use case: Find student</a></h3>
+<h3 id="use-case-find-student"><a class="link" href="#use-case-find-student">C.5. Use case: Find student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2736,7 +2813,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-select-student-or-goal"><a class="link" href="#use-case-select-student-or-goal">C.5. Use case: Select student or goal</a></h3>
+<h3 id="use-case-select-student-or-goal"><a class="link" href="#use-case-select-student-or-goal">C.6. Use case: Select student or goal</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2788,7 +2865,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-add-reminder"><a class="link" href="#use-case-add-reminder">C.6. Use case: Add reminder</a></h3>
+<h3 id="use-case-add-reminder"><a class="link" href="#use-case-add-reminder">C.7. Use case: Add reminder</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2824,7 +2901,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-delete-reminder"><a class="link" href="#use-case-delete-reminder">C.7. Use case: Delete reminder</a></h3>
+<h3 id="use-case-delete-reminder"><a class="link" href="#use-case-delete-reminder">C.8. Use case: Delete reminder</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2873,7 +2950,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-meet-student"><a class="link" href="#use-case-meet-student">C.8. Use case: Meet student</a></h3>
+<h3 id="use-case-meet-student"><a class="link" href="#use-case-meet-student">C.9. Use case: Meet student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2922,7 +2999,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-sort-students"><a class="link" href="#use-case-sort-students">C.9. Use case: Sort students</a></h3>
+<h3 id="use-case-sort-students"><a class="link" href="#use-case-sort-students">C.10. Use case: Sort students</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2971,7 +3048,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-add-goal"><a class="link" href="#use-case-add-goal">C.10. Use case: Add goal</a></h3>
+<h3 id="use-case-add-goal"><a class="link" href="#use-case-add-goal">C.11. Use case: Add goal</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3007,7 +3084,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-edit-goal"><a class="link" href="#use-case-edit-goal">C.11. Use case: Edit goal</a></h3>
+<h3 id="use-case-edit-goal"><a class="link" href="#use-case-edit-goal">C.12. Use case: Edit goal</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3078,7 +3155,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-delete-goal"><a class="link" href="#use-case-delete-goal">C.12. Use case: Delete goal</a></h3>
+<h3 id="use-case-delete-goal"><a class="link" href="#use-case-delete-goal">C.13. Use case: Delete goal</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3126,7 +3203,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-complete-goal"><a class="link" href="#use-case-complete-goal">C.13. Use case: Complete goal</a></h3>
+<h3 id="use-case-complete-goal"><a class="link" href="#use-case-complete-goal">C.14. Use case: Complete goal</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3191,7 +3268,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-ongoing-goal"><a class="link" href="#use-case-ongoing-goal">C.14. Use case: Ongoing goal</a></h3>
+<h3 id="use-case-ongoing-goal"><a class="link" href="#use-case-ongoing-goal">C.15. Use case: Ongoing goal</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3259,7 +3336,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-sort-goal"><a class="link" href="#use-case-sort-goal">C.15. Use case: Sort goal</a></h3>
+<h3 id="use-case-sort-goal"><a class="link" href="#use-case-sort-goal">C.16. Use case: Sort goal</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3340,7 +3417,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-seek-resident-assistant-ra"><a class="link" href="#use-case-seek-resident-assistant-ra">C.16. Use case: Seek Resident Assistant (RA)</a></h3>
+<h3 id="use-case-seek-resident-assistant-ra"><a class="link" href="#use-case-seek-resident-assistant-ra">C.17. Use case: Seek Resident Assistant (RA)</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3396,7 +3473,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-rate-friends"><a class="link" href="#use-case-rate-friends">C.17. Use case: Rate friends</a></h3>
+<h3 id="use-case-rate-friends"><a class="link" href="#use-case-rate-friends">C.18. Use case: Rate friends</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3457,7 +3534,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-show-student"><a class="link" href="#use-case-show-student">C.18. Use case: Show student</a></h3>
+<h3 id="use-case-show-student"><a class="link" href="#use-case-show-student">C.19. Use case: Show student</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3513,7 +3590,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-switch-theme-colour"><a class="link" href="#use-case-switch-theme-colour">C.19. Use case: Switch theme colour</a></h3>
+<h3 id="use-case-switch-theme-colour"><a class="link" href="#use-case-switch-theme-colour">C.20. Use case: Switch theme colour</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3561,7 +3638,115 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-history"><a class="link" href="#use-case-history">C.20. Use case: History</a></h3>
+<h3 id="use-case-undo"><a class="link" href="#use-case-undo">C.21. Use case: Undo</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to undo a command</p>
+</li>
+<li>
+<p>CollegeZone undo the command and update <em>CollegeZone</em></p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The given format is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CollegeZone shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. There are no more commands to undo.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. CollegeZone shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-redo"><a class="link" href="#use-case-redo">C.22. Use case: Redo</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to redo a command</p>
+</li>
+<li>
+<p>CollegeZone redo the command and update <em>CollegeZone</em></p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The given format is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CollegeZone shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. There are no more commands to redo.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. CollegeZone shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-seek-resident-assistant-ra-2"><a class="link" href="#use-case-seek-resident-assistant-ra-2">C.23. Use case: Seek Resident Assistant (RA)</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="use-case-history"><a class="link" href="#use-case-history">C.24. Use case: History</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3600,7 +3785,7 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-clear"><a class="link" href="#use-case-clear">C.21. Use case: Clear</a></h3>
+<h3 id="use-case-clear"><a class="link" href="#use-case-clear">C.25. Use case: Clear</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3639,7 +3824,46 @@ b. Require developers to download those libraries manually (this creates extra w
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-exit-collegezone"><a class="link" href="#use-case-exit-collegezone">C.22. Use case: Exit CollegeZone</a></h3>
+<h3 id="use-case-help"><a class="link" href="#use-case-help">C.26. Use case: Help</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for help page in CollegeZone</p>
+</li>
+<li>
+<p>CollegeZone opens help page</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The given format is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. CollegeZone shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-exit-collegezone"><a class="link" href="#use-case-exit-collegezone">C.27. Use case: Exit CollegeZone</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3888,7 +4112,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 04:08:57 UTC
+Last updated 2018-04-15 04:51:59 UTC
 </div>
 </div>
 </body>

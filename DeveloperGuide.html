@@ -2108,7 +2108,7 @@ the specific <code>meetDates</code> or 'Person' that the user wants to remove.</
 <p><code>SortCommandParser</code> takes in an argument in the form of <code>INDEX_TYPE</code> that defines how <code>UniquePersonList</code> should be sorted. You may customise the sort operation, with <code>PREFIX</code> specifying the sort type. It first checks for validity against a regular expression. Once verified, the argument will be tokenized to identify your specified sort type. A <code>SortCommand</code> object is then created with the identified sort type.</p>
 </div>
 <div class="paragraph">
-<p>The <code>INDEX_TYPE</code> can be any three of the following: <code>1</code> for sorting RC4 Students based on their level of friendship, <code>2</code> for sorting persons by meet date, <code>3</code> for sorting persons by Birthday. The <code>ORDER</code> can be either <code>asc</code> for sorting in ascending order or <code>dsc</code> for sorting in descending order. The sorted list is always default to descending order of importance.</p>
+<p>The <code>INDEX_TYPE</code> can be any three of the following: <code>1</code> for sorting RC4 Students based on their level of friendship, <code>2</code> for sorting persons by meet date, <code>3</code> for sorting persons by Birthday. The sorted list is always default to descending order of importance.</p>
 </div>
 <div class="paragraph">
 <p>Upon execution of <code>SortCommand</code>, a <code>Comparator&lt;Person&gt;</code> will be initialised based on the sort type it receives. A <code>sortPersons</code> function call will be made to <code>Model</code>, which propagates down to <code>UniquePersonList</code>, where the sorting of the <code>internalList</code> occurs. Since sorting of <code>internalList</code> results in the change of state to address book, <code>SortCommand</code> is to be implemented as an <code>UndoableCommand</code>.</p>
@@ -4329,7 +4329,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:42:08 UTC
+Last updated 2018-04-15 11:41:47 UTC
 </div>
 </div>
 </body>

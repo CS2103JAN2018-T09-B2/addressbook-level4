@@ -15,18 +15,6 @@
 <h1>Deborah Low Shi Lei - Project Portfolio</h1>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>(<a href="https://github.com/deborahlow97">GitHub</a>)</p>
-</div>
-<div class="paragraph">
-<p>Welcome to my project portfolio. This document summarises my contributions of every software-related project that I have
-been involved with. The link to my GitHub page can be found above. This is where you can find the repository of every
-project mentioned below.</p>
-</div>
-</div>
-</div>
 <div class="sect1">
 <h2 id="project-collegezone"><a class="link" href="#project-collegezone">Project: CollegeZone</a></h2>
 <div class="sectionbody">
@@ -584,9 +572,6 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <li>
 <p>Justification: The addition of this field provides user with more comprehensive contact details to add into CollegeZone.</p>
 </li>
-<li>
-<p>External behavior:<br></p>
-</li>
 </ul>
 </div>
 </div>
@@ -627,179 +612,6 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="targeted-add-and-edit-command-since-v1-2"><a class="link" href="#targeted-add-and-edit-command-since-v1-2">Targeted add and edit command [Since v1.2]</a></h3>
-<div class="paragraph">
-<p>As CollegeZone is designed for NUS RC4 students to use, being able to record other students Level of Friendship,
- Birthday, RC4 Unit Number and RC4 CCAs, will be a useful feature for them.</p>
-</div>
-<div class="paragraph">
-<p>As CollegeZone is catered toward NUS RC4 Residents, we have changed the attributes of a Person to hold:<br>
-<strong>Name, Mobile Number, Birthday, Level of Friendship, RC4 Unit Number, Meet up dates with RC4 students, RC4 CCAs and Tags</strong>.<br>
-This is done by removing unwanted attributes of a person and adding new attributes of a person.<br>
-The figure below shows the new atrributes for student in the class diagram.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/RC4ModelComponenetClass.JPG" alt="RC4ModelComponenetClass" width="800">
-</div>
-<div class="title">Figure 10. Class diagram for Student</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="paragraph">
-<p><strong>Aspect</strong>: Displaying level of friendship in <code>CollegeZone</code> UI.</p>
-</div>
-<div class="paragraph">
-<p><strong>Alternative 1(current choice)</strong>: <code>Level of Friendship</code> is displayed as a string of heart symbols.<br>
-<strong>Pros</strong>: Looks fanciful to user.<br>
-<strong>Cons</strong>: Might not be intuitive for the user to understand the meaning of heart symbols.</p>
-</div>
-<div class="paragraph">
-<p><strong>Alternative 2</strong>: <code>Level of Friendship</code> is displayed as a number. +<br>
-<strong>Pros</strong>: User easily understands the meaning of it.<br>
-<strong>Cons</strong>: Less eye catching to the user.</p>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect2">
-<h3 id="goal-object-since-v1-2"><a class="link" href="#goal-object-since-v1-2">Goal Object [Since v1.2]</a></h3>
-<div class="paragraph">
-<p>CollegeZone is designed for RC4 students to use. RC4 students often have goals that they want to achieve in life
-– Career goals, health goals, social goals, relationship goals etc. This additional goal feature is created for RC4 users to add and keep track of their goals throughout their stay.
-The main reason behind this implementation is because setting goals gives you <strong>long-term vision</strong> and <strong>short-term motivation</strong> for the goals.
-This implementation allows RC4 students to set goals in <em>CollegeZone</em> – big or small ones - so
- that they will be reminded of the goals that they have set for themselves.</p>
-</div>
-<div class="paragraph">
-<p><strong>Goal features:</strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code> 1. add goal
- 2. edit goal
- 3. delete goal
- 4. complete goal
- 5. ongoing goal
- 6. sort goal</code></pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="implementation-of-goal-object"><a class="link" href="#implementation-of-goal-object">Implementation of Goal Object</a></h4>
-<div class="paragraph">
-<p><strong>Goal objects consists of 5 attributes :</strong><br></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Date and time of when goal is completed.<br></p>
-</li>
-<li>
-<p>Level of importance of goal.<br></p>
-</li>
-<li>
-<p>Text content of Goal.<br></p>
-</li>
-<li>
-<p>Date and time of Goal of when goal has started.<br></p>
-</li>
-<li>
-<p>Goal completion status.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CollegeZoneGoalModelClassDiagram.JPG" alt="CollegeZoneGoalModelClassDiagram" width="750">
-</div>
-<div class="title">Figure 11. <em>Class diagram of Goal</em></div>
-</div>
-<div class="paragraph">
-<p>The code snippet shown below shows the overloading of StartDateTime constructor class.
-It keeps both a String value and a LocalDateTime value.
-The <em>Code-snippet 2 and 3</em> shows the conversion of the String value to LocalDateTime value and vice versa.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">StartDateTime</span> <span class="directive">implements</span> <span class="predefined-type">Comparable</span>&lt;StartDateTime&gt; {
-
-    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">String</span> value;
-    <span class="directive">public</span> <span class="directive">final</span> LocalDateTime localDateTimeValue;
-
-    <span class="directive">public</span> StartDateTime(LocalDateTime startDateTime) {
-        requireNonNull(startDateTime);
-        <span class="local-variable">this</span>.localDateTimeValue = startDateTime;
-        <span class="local-variable">this</span>.value = properDateTimeFormat(startDateTime);
-    }
-
-    <span class="directive">public</span> StartDateTime(<span class="predefined-type">String</span> startDateTimeInString) {
-        requireNonNull(startDateTimeInString);
-        <span class="local-variable">this</span>.value = startDateTimeInString;
-        <span class="local-variable">this</span>.localDateTimeValue = getLocalDateTimeFromProperDateTime(startDateTimeInString);
-    }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Code Snippet 3.10.1: StartDateTime method</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">String</span> properDateTimeFormat(LocalDateTime dateTime) {
-        <span class="predefined-type">StringBuilder</span> builder = <span class="keyword">new</span> <span class="predefined-type">StringBuilder</span>();
-        <span class="type">int</span> day = dateTime.getDayOfMonth();
-        <span class="predefined-type">String</span> month = dateTime.getMonth().getDisplayName(TextStyle.FULL, <span class="predefined-type">Locale</span>.ENGLISH);
-        <span class="type">int</span> year = dateTime.getYear();
-        <span class="type">int</span> hour = dateTime.getHour();
-        <span class="type">int</span> minute = dateTime.getMinute();
-        builder.append(<span class="string"><span class="delimiter">&quot;</span><span class="content">Date: </span><span class="delimiter">&quot;</span></span>)
-                .append(day)
-                .append(<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>)
-                .append(month)
-                .append(<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>)
-                .append(year)
-                .append(<span class="string"><span class="delimiter">&quot;</span><span class="content">,  Time: </span><span class="delimiter">&quot;</span></span>)
-                .append(<span class="predefined-type">String</span>.format(<span class="string"><span class="delimiter">&quot;</span><span class="content">%02d</span><span class="delimiter">&quot;</span></span>, hour))
-                .append(<span class="string"><span class="delimiter">&quot;</span><span class="content">:</span><span class="delimiter">&quot;</span></span>)
-                .append(<span class="predefined-type">String</span>.format(<span class="string"><span class="delimiter">&quot;</span><span class="content">%02d</span><span class="delimiter">&quot;</span></span>, minute));
-        <span class="keyword">return</span> builder.toString();
-    }</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Code Snippet 3.10.2: Method conversion</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">static</span> LocalDateTime getLocalDateTimeFromProperDateTime(<span class="predefined-type">String</span> properDateTimeString) {
-        <span class="predefined-type">String</span> trimmedArgs = properDateTimeString.trim();
-        <span class="type">int</span> size = trimmedArgs.length();
-        <span class="predefined-type">String</span> stringFormat = properDateTimeString.substring(BEGIN_INDEX, size);
-        stringFormat = stringFormat.replace(<span class="string"><span class="delimiter">&quot;</span><span class="content">, Time: </span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>);
-        <span class="keyword">return</span> nattyDateAndTimeParser(stringFormat).get();
-    }</code></pre>
-</div>
-</div>
-<div class="ulist">
-<div class="title">Code Snippet 3.10.3: Method conversion</div>
-<ul>
-<li>
-<p>All goals will have a string of stars (indicating importance) in a yellow border directly below the goal text in the goal list panel.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
-<div class="paragraph">
-<p><strong>Aspect:</strong> Representation of Goals level of importance in UI<br>
-<strong>Alternative 1 (current choice):</strong> Each level of importance have a number of stars related to it.<br>
-<strong>Pros:</strong> Ability for the user to differentiate the Goals with higher level of importance compared to those with lower level of importance.<br>
-<strong>Cons:</strong> The goal list in the UI might look messy to the user without having a sort Goals option as the list of goals is displayed based on when it was added.<br>
-<strong>Alternative 2:</strong> Having an additional sort goal command<br>
-<strong>Pros:</strong> It is simple and easy to understand.<br>
-<strong>Cons:</strong> It requires extra methods to implement the sort function.<br></p>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect2">
 <h3 id="add-goal-mechanism-since-v1-3"><a class="link" href="#add-goal-mechanism-since-v1-3">Add goal mechanism [Since v1.3]</a></h3>
 <div class="paragraph">
 <p>Adding a goal into <em>CollegeZone</em> is facilitated by <code>AddGoalCommand</code>, which extends <code>UndoableCommand</code>, it
@@ -822,7 +634,7 @@ supports undoing and redoing of commands that modifies the state of the <em>Coll
 <div class="content">
 <img src="../images/AddGoalSeqDiagram.PNG" alt="AddGoalSeqDiagram" width="800">
 </div>
-<div class="title">Figure 12. <em>Interactions Inside the Logic Component for the <code>+g</code> Command</em></div>
+<div class="title">Figure 10. <em>Interactions Inside the Logic Component for the <code>+g</code> Command</em></div>
 </div>
 <div class="paragraph">
 <p>AddGoalCommand is implemented in this way:</p>
@@ -879,7 +691,7 @@ In the Storage component, the new goal added is stored in the address book stora
 - A goal that has just been added will be placed at the bottom of the goal list.<br></p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of adding start date time and completion status of goal<br>
 <strong>Alternative 1 (current choice):</strong> Having the current date time as the start date time and having a default completion status of a goal added.<br>
@@ -904,56 +716,6 @@ In the Storage component, the new goal added is stored in the address book stora
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-goal-mechanism-since-v1-4"><a class="link" href="#delete-goal-mechanism-since-v1-4">Delete goal mechanism [Since v1.4]</a></h3>
-<div class="paragraph">
-<p>Deleting a goal from <em>CollegeZone</em> is facilitated by <code>DeleteGoalCommand</code>, which extends <code>UndoableCommand</code>, it
-supports undoing and redoing of commands that modifies the state of the <em>CollegeZone</em>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteGoalCommand</span> <span class="directive">extends</span> UndoableCommand {
-<span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
-        <span class="comment">// ... DeleteGoalCommand logic ...</span>
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>DeleteGoalCommand is implemented in this way:</p>
-</div>
-<div class="paragraph">
-<p>In the Logic component, <code>AddressBookParser</code> will parse the user&#8217;s input, for example, <code>-goal 1</code> and detects the <code>INDEX</code> given by the user .
-<code>DeleteGoalCommandParser</code> parses the <code>INDEX</code>:<br>
-e.g.Parsed index : 1<br></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteGoalSeqDiagram.PNG" alt="DeleteGoalSeqDiagram" width="800">
-</div>
-<div class="title">Figure 13. <em>Interactions Inside the Logic Component for the <code>-goal</code> Command</em></div>
-</div>
-<div class="paragraph">
-<p><code>DeleteGoalCommandParser</code> creates a <code>DeleteGoalCommand</code> class and passes the index as argument.
-It deletes the goal corresponding to the index locally and runs the execution which calls the model
-The filtered goals list and deletion of the specified Goal object occurs. The filtered goals list is updated and retrieved.
-The UI component displays the deletion of goal in the goal list panel and the storage component deletes the details of the deleted goal in the address book storage.</p>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
-<div class="paragraph">
-<p><strong>Aspect:</strong> Deciding the field for user to enter to delete the goal<br>
-<strong>Alternative 1 (current choice):</strong> Using <code>INDEX</code> of goals in goal list panel<br>
-<strong>Pros:</strong> Easier to implement as it&#8217;s implementation is similar to deleting a student and easier for the user to type in the command as <code>INDEX</code> is an integer<br>
-<strong>Cons:</strong>  User might get confused as we have 2 list panels with <code>INDEX</code><br>
-<strong>Alternative 2: </strong> Using <code>GOAL_TEXT</code> of goals in goal list panel<br>
-<strong>Pros:</strong> Lower chance for user to use delete goal command wrongly<br>
-<strong>Cons:</strong> User have to type in a longer command</p>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect2">
 <h3 id="sort-goal-mechanism-since-v1-5"><a class="link" href="#sort-goal-mechanism-since-v1-5">Sort goal mechanism [Since v1.5]</a></h3>
 <div class="paragraph">
 <p>The sorting goal mechanism is facilitated by <code>SortGoalCommandParser</code> and <code>SortGoalCommand</code>, with both classes residing
@@ -972,7 +734,7 @@ On the other hand, <code>FIELD</code> only accepts 3 keywords: <code>importance<
 <div class="content">
 <img src="../images/SortGoalSeqDiagram.PNG" alt="SortGoalSeqDiagram" width="800">
 </div>
-<div class="title">Figure 14. Interactions Inside the Logic Component for the <code>sortgoal importance o/ascending</code> Command</div>
+<div class="title">Figure 11. Interactions Inside the Logic Component for the <code>sortgoal importance o/ascending</code> Command</div>
 </div>
 <div class="paragraph">
 <p>Upon execution of <code>SortGoalCommand</code>, a <code>Comparator&lt;Goal&gt;</code> will be initialised based on the sort type it receives.
@@ -1036,7 +798,7 @@ If the goal list is found to be empty, a <code>CommandException</code> will be t
 </table>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Deciding the fields and orders that the goal list can be sorted<br>
 <strong>Alternative 1:</strong> Sort only one field and in one order<br>
@@ -1092,7 +854,7 @@ The following code snippet shows how the theme switch event is handled.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Storing user choice of theme<br>
 <strong>Alternative 1 (current choice):</strong> User prefs will be set to <code>dark</code> theme colour by default<br>
@@ -1171,7 +933,7 @@ The following code snippet shows how the theme switch event is handled.<br></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:53:23 UTC
+Last updated 2018-04-15 15:25:49 UTC
 </div>
 </div>
 </body>
